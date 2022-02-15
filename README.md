@@ -1,4 +1,3 @@
-## Readme will soon be added
 
 # Developeer Client
 
