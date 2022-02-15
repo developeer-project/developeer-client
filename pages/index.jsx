@@ -1,43 +1,32 @@
-import Layout from '../components/Layout'
-import Post from '../components/Post'
+import { Title, Text, Anchor } from "@mantine/core";
 
-const Blog = props => {
+export default function HomePage() {
   return (
-    <Layout>
-      <div className="page">
-        <h1>My Blog</h1>
-        <main>
-          {props.feed.map(post => (
-            <div key={post.id} className="post">
-              <Post post={post} />
-            </div>
-          ))}
-        </main>
-      </div>
-      <style jsx>{`
-        .post {
-          background: white;
-          transition: box-shadow 0.1s ease-in;
-        }
-
-        .post:hover {
-          box-shadow: 1px 1px 3px #aaa;
-        }
-
-        .post + .post {
-          margin-top: 2rem;
-        }
-      `}</style>
-    </Layout>
-  )
+    <>
+      <Title
+        sx={{ fontSize: 100, fontWeight: 900, letterSpacing: -2 }}
+        align="center"
+        mt={100}>
+        Welcome to{" "}
+        <Text inherit variant="gradient" component="span">
+          Mantine
+        </Text>
+      </Title>
+      <Text
+        color="dimmed"
+        align="center"
+        size="lg"
+        sx={{ maxWidth: 580 }}
+        mx="auto"
+        mt="xl">
+        This starter Next.js projects includes a minimal setup for server side
+        rendering, if you want to learn more on Mantine + Next.js integration
+        follow{" "}
+        <Anchor href="https://mantine.dev/theming/next/" size="lg">
+          this guide
+        </Anchor>
+        . To get started edit index.tsx file.
+      </Text>
+    </>
+  );
 }
-
-export const getServerSideProps = async () => {
-  const res = await fetch('http://localhost:3000/api/feed')
-  const feed = await res.json()
-  return {
-    props: { feed },
-  }
-}
-
-export default Blog

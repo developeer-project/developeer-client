@@ -299,4 +299,3 @@ In the application code, you can access the new endpoint via `fetch` operations 
 - Share your feedback in the [`prisma2`](https://prisma.slack.com/messages/CKQTGR6T0/) channel on the [Prisma Slack](https://slack.prisma.io/)
 - Create issues and ask questions on [GitHub](https://github.com/prisma/prisma/)
 
-# developeer-client
