@@ -2,6 +2,9 @@ import Head from "next/head";
 import { MantineProvider, NormalizeCSS, GlobalStyles } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 
+import "../styles/globals.scss";
+import Layout from "../components/Layout";
+
 export default function App(props) {
   const { Component, pageProps } = props;
 
@@ -23,9 +26,23 @@ export default function App(props) {
         <NormalizeCSS />
         <GlobalStyles />
         <NotificationsProvider>
-          <Component {...pageProps} />
+        <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </NotificationsProvider>
       </MantineProvider>
     </>
   );
 }
+// import { SessionProvider } from "next-auth/react"
+
+// export default function App({
+//   Component,
+//   pageProps: { session, ...pageProps },
+// }) {
+//   return (
+//     <SessionProvider session={session}>
+//       <Component {...pageProps} />
+//     </SessionProvider>
+//   )
+// }

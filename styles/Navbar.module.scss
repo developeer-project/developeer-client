@@ -1,0 +1,29 @@
+.nav_wrap {
+      width: 100vw;
+      padding: 0.4rem 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    
+      .nav_logo_wrap {
+        img {
+          height: 3rem;
+          width: auto;
+        }
+      }
+    
+      .nav_menu_wrap {
+        display: flex;
+        align-items: center;
+        width: 40%;
+        justify-content: space-evenly;
+    
+        ul {
+          list-style-type: none;
+          width: 65%;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+        }
+      }
+    }

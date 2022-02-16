@@ -1,0 +1,32 @@
+.pageBody{
+      width: 100vw;
+      height: 95vh;
+      display: flex;
+      img {
+            height: 10em;
+            width: auto;
+          }
+}
+
+.buttonWrap{
+      width: 70vw !important;
+      padding: auto 30% !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10em;
+}
+
+.signupButton{
+      padding: 7rem !important;
+      width: 70vw;
+}
+
+.emptyDiv{
+      width: 50%;
+      border: 1px solid red;
+}
+
+.text{
+      text-decoration: underline;
+}
