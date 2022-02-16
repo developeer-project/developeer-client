@@ -1,32 +1,23 @@
-import { Title, Text, Anchor } from "@mantine/core";
+import { Title } from "@mantine/core";
+import styles from "../styles/Homepage.module.scss";
 
 export default function HomePage() {
   return (
     <>
-      <Title
-        sx={{ fontSize: 100, fontWeight: 900, letterSpacing: -2 }}
-        align="center"
-        mt={100}>
-        Welcome to{" "}
-        <Text inherit variant="gradient" component="span">
-          Mantine
-        </Text>
+      <h1 className="stylename">
+        html Example 1 --: styles are taken from{" "}
+        <span>styles/globals.scss </span>{" "}
+      </h1>
+
+      <h3 className={styles.head3}>
+        html Example 2 --: styles taken from
+        <span> styles/Homepage.module.scss </span>
+      </h3>
+
+      <Title sx={{ color: "blue", fontSize: 32 }} order={2}>
+        Mantine Example 1 --: styles taken from{" "}
+        <span> sx property in line number 17</span>
       </Title>
-      <Text
-        color="dimmed"
-        align="center"
-        size="lg"
-        sx={{ maxWidth: 580 }}
-        mx="auto"
-        mt="xl">
-        This starter Next.js projects includes a minimal setup for server side
-        rendering, if you want to learn more on Mantine + Next.js integration
-        follow{" "}
-        <Anchor href="https://mantine.dev/theming/next/" size="lg">
-          this guide
-        </Anchor>
-        . To get started edit index.tsx file.
-      </Text>
     </>
   );
 }

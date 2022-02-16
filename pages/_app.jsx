@@ -2,13 +2,16 @@ import Head from "next/head";
 import { MantineProvider, NormalizeCSS, GlobalStyles } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 
+import "../styles/globals.scss";
+import Layout from "../components/Layout";
+
 export default function App(props) {
   const { Component, pageProps } = props;
 
   return (
     <>
       <Head>
-        <title>Mantine next example</title>
+        <title>Welcome to Developeer</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -23,7 +26,9 @@ export default function App(props) {
         <NormalizeCSS />
         <GlobalStyles />
         <NotificationsProvider>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </NotificationsProvider>
       </MantineProvider>
     </>

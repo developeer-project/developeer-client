@@ -25,7 +25,8 @@
     "react-markdown": "^8.0.0"
   },
   "devDependencies": {
-    "prisma": "3.9.2"
+    "prisma": "3.9.2",
+    "sass": "^1.49.7"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
