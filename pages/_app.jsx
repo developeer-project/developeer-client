@@ -1,12 +1,18 @@
 import Head from "next/head";
 import { MantineProvider, NormalizeCSS, GlobalStyles } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
+import { useState } from "react";
+import { ColorSchemeProvider } from "@mantine/core";
 
 import "../styles/globals.scss";
 import Layout from "../components/Layout";
 
 export default function App(props) {
   const { Component, pageProps } = props;
+  const [colorScheme, setColorScheme] = useState("light");
+
+  const toggleColorScheme = (value) =>
+    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
   return (
     <>
@@ -17,20 +23,24 @@ export default function App(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-
-      <MantineProvider
-        theme={{
-          /** Put your mantine theme override here */
-          colorScheme: "light",
-        }}>
-        <NormalizeCSS />
-        <GlobalStyles />
-        <NotificationsProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </NotificationsProvider>
-      </MantineProvider>
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}>
+        <MantineProvider
+          theme={{
+            /** Put your mantine theme override here */
+            colorScheme,
+            loader: "bars",
+          }}>
+          <NormalizeCSS />
+          <GlobalStyles />
+          <NotificationsProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </NotificationsProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
     </>
   );
 }
