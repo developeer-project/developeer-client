@@ -3,12 +3,17 @@ import { MantineProvider, NormalizeCSS, GlobalStyles } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 import { useState } from "react";
 import { ColorSchemeProvider } from "@mantine/core";
+import { SessionProvider } from "next-auth/react";
 
 import "../styles/globals.scss";
 import Layout from "../components/Layout";
 
 export default function App(props) {
-  const { Component, pageProps } = props;
+  const {
+    Component,
+    pageProps: { session, ...pageProps },
+  } = props;
+
   const [colorScheme, setColorScheme] = useState("light");
 
   const toggleColorScheme = (value) =>
@@ -35,9 +40,11 @@ export default function App(props) {
           <NormalizeCSS />
           <GlobalStyles />
           <NotificationsProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <SessionProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </SessionProvider>
           </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
