@@ -41,46 +41,70 @@
 
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-
+import EmailProvider from "next-auth/providers/email"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client";
+import GoogleProvider from "next-auth/providers/google";
+
+// import { Mailer } from 'nodemailer-react'
 // import prisma from '../../../lib/prisma';
 
 const prisma = new PrismaClient();
 
 export default NextAuth({
-
-  // Configure one or more authentication providers
+  adapter: PrismaAdapter(prisma),
   providers: [
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    // }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    }),
+    
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    // ...add more providers here
+
+    EmailProvider({
+                //   server: {
+                //     server: process.env.EMAIL_SERVER,
+                //     from: process.env.EMAIL_FROM,
+                //   },
+                // }),
+                server: {
+                  host: process.env.SMTP_HOST,
+                  port: process.env.SMTP_PORT,
+                  auth: {
+                    user: process.env.SMTP_USER,
+                    pass: process.env.SMTP_PASSWORD
+                  }
+                },
+                from: process.env.EMAIL_FROM
+              }),
   ],
-//   adapter: PrismaAdapter(prisma),
   secret: process.env.SECRET,
+  session:{
+    jwt:true
+  },
+
+  jwt:{
+
+  },
+
+  pages:{
+
+  },
+
+  callbacks:{
+
+  },
+  events:{
+
+  },
+
+  theme: 'light',
+  debug:false,
 })
-
-
-// import NextAuth from 'next-auth';
-// import { PrismaAdapter } from '@next-auth/prisma-adapter';
-// import GitHubProvider from 'next-auth/providers/github';
-// import prisma from '../../../lib/prisma';
-
-// const authHandler = (req, res) => NextAuth(req, res, options);
-// export default authHandler;
-
-// const options = {
-//   adapter: PrismaAdapter(prisma),
-//   providers: [
-//     GitHubProvider({
-//       clientId: process.env.GITHUB_ID,
-//       clientSecret: process.env.GITHUB_SECRET,
-//     }),
-//   ],
-//   session:{
-//         strategy:"jwt",
-//   },
-//   secret: process.env.SECRET,
-// };
