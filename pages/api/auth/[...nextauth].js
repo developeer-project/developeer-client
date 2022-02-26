@@ -39,39 +39,18 @@
 // export default authHandler;
 
 
-// import NextAuth from "next-auth"
-// import GithubProvider from "next-auth/providers/github"
+import NextAuth from "next-auth"
+import GithubProvider from "next-auth/providers/github"
 
-// import { PrismaAdapter } from "@next-auth/prisma-adapter"
-// import { PrismaClient } from "@prisma/client";
-// // import prisma from '../../../lib/prisma';
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import { PrismaClient } from "@prisma/client";
+// import prisma from '../../../lib/prisma';
 
-// const prisma = new PrismaClient();
-
-// export default NextAuth({
-
-//   // Configure one or more authentication providers
-//   providers: [
-//     GithubProvider({
-//       clientId: process.env.GITHUB_ID,
-//       clientSecret: process.env.GITHUB_SECRET,
-//     }),
-//     // ...add more providers here
-//   ],
-// //   adapter: PrismaAdapter(prisma),
-//   secret: process.env.SECRET,
-// })
-
-
-import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-
-import PrismaInstance from "../../../lib/prisma";
+const prisma = new PrismaClient();
 
 export default NextAuth({
+
   // Configure one or more authentication providers
-  adapter: PrismaAdapter(PrismaInstance),
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -79,8 +58,29 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
-  session: {
-    strategy: "jwt",
-  },
-  debug: true,
-});
+//   adapter: PrismaAdapter(prisma),
+  secret: process.env.SECRET,
+})
+
+
+// import NextAuth from 'next-auth';
+// import { PrismaAdapter } from '@next-auth/prisma-adapter';
+// import GitHubProvider from 'next-auth/providers/github';
+// import prisma from '../../../lib/prisma';
+
+// const authHandler = (req, res) => NextAuth(req, res, options);
+// export default authHandler;
+
+// const options = {
+//   adapter: PrismaAdapter(prisma),
+//   providers: [
+//     GitHubProvider({
+//       clientId: process.env.GITHUB_ID,
+//       clientSecret: process.env.GITHUB_SECRET,
+//     }),
+//   ],
+//   session:{
+//         strategy:"jwt",
+//   },
+//   secret: process.env.SECRET,
+// };
