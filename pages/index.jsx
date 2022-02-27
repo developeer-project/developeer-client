@@ -1,22 +1,19 @@
 import styles from "../styles/Homepage.module.scss";
 import TestPage from "../components/test";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { Button } from "@mantine/core";
 
 export default function IndexPage() {
-  const { data: session } = useSession();
-  if (session) {
+  const { data: session, status } = useSession();
+  if (status === "authenticated") {
     return (
       <>
-        Signed in as {session.user} <br />
-        <TestPage />
-        <button onClick={() => signOut()}>Sign out</button>
+        <p>Signed in as {session.user.email}</p>
+        <TestPage/>
+        <Button onClick={signOut} > Sign out</Button>
       </>
     );
   }
-  return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  );
+
+  return <Button onClick={signIn}>Sign in</Button>;
 }

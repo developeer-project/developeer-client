@@ -39,13 +39,13 @@ export default function App(props) {
           }}>
           <NormalizeCSS />
           <GlobalStyles />
+            <SessionProvider session={session}>
           <NotificationsProvider>
-            <SessionProvider>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
-            </SessionProvider>
           </NotificationsProvider>
+            </SessionProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </>
