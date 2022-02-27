@@ -86,9 +86,9 @@ export default NextAuth({
               }),
   ],
   secret: process.env.SECRET,
-  session:{
-    jwt:true
-  },
+  // session:{
+  //   jwt:true
+  // },
 
   jwt:{
 
@@ -105,6 +105,6 @@ export default NextAuth({
 
   },
 
-  theme: 'light',
+  theme: 'dark',
   debug:false,
 })
