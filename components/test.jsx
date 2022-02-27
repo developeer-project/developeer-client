@@ -11,7 +11,7 @@ const TestPage = () => {
   return (
     <>
       <h1 className="stylename">
-        html Example 1 --: styles are taken from
+        html Example 1 --: styles are taken from 
         <span>styles/globals.scss </span>
       </h1>
 
