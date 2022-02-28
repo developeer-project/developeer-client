@@ -1,9 +1,12 @@
 import React from "react";
 import { Button } from "@mantine/core";
+import { useRouter } from 'next/router';
 
 import styles from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
+
+  const router = useRouter();
   return (
     <div className={styles.nav_wrap}>
       <div className={styles.nav_logo_wrap}>
@@ -19,7 +22,7 @@ const Navbar = () => {
           <li>menu3</li>
         </ul>
 
-        <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
+        <Button onClick={() => router.push('./api/auth/signin')} variant="gradient" gradient={{ from: "orange", to: "red" }}>
           Get Started
         </Button>
       </div>

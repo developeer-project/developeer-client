@@ -1,0 +1,42 @@
+.pageBody{
+      width: 90vw;
+      height: 80vh;
+      display: flex;
+}
+
+.signinWrap{
+      width: 25vw !important;
+      height: 25vw !important;
+      padding: 7vw !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 7em;
+      border: 1px solid grey;
+      border-radius: 10px;
+}
+
+.emptyDiv{
+      width: 50%;
+      // border: 1px solid red;
+      align-items: center;
+}
+
+.submitButton {
+      width: 20vw;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 5px;
+      align-items: center;
+      cursor: pointer;
+}
+
+.input{
+      width: 20vw;    
+}
+
+.buttonProvider{
+      width: 20vw;   
+}

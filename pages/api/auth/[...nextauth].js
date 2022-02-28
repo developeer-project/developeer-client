@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
@@ -21,6 +22,7 @@ export default NextAuth({
         };
       },
     }),
+
     EmailProvider({
       server: {
         host: process.env.SMTP_HOST,
@@ -34,8 +36,13 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+  pages: {
+    signIn: '/auth/signin',
+    // signOut: '/auth/signout',
+  },
   session: {
     strategy: "jwt",
   },
+  theme: 'dark',
   debug: true,
 });
