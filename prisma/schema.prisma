@@ -43,6 +43,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  user_profile  UserProfile?
   accounts      Account[]
   sessions      Session[]
 }
@@ -53,4 +54,47 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model UserProfile{
+  id Int @id @default(autoincrement())
+  college_name String
+  bio String?
+  location String
+  interests String[]
+  user User @relation(fields: [user_id], references: [id])
+  user_id String
+
+  skills_id Skills[] @relation(references: [id])
+  links_id Links[] @relation(references: [id])
+  projects_id Projects[]
+}
+
+model Skills{
+  id Int @id @default(autoincrement())
+  skill String
+  user_profile_id UserProfile[] @relation(references: [id])
+}
+
+model Links{
+  id Int @id @default(autoincrement())
+  portfolio_link String?
+  linkedin String?
+  github String?
+  instagram String?
+  twitter String?
+  facebook String?
+  other_links String[]
+  user_profile_id UserProfile[] @relation(references: [id])
+}
+
+model Projects{
+  id Int @id @default(autoincrement())
+  title String
+  repo_link String
+  tech_stack String[]
+  description String
+  link String?
+  user_profile_id Int
+  user_profile UserProfile @relation(fields: [user_profile_id], references: [id])
 }
