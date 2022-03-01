@@ -8,19 +8,20 @@ const Navbar = () => {
     <div className={styles.nav_wrap}>
       <div className={styles.nav_logo_wrap}>
         <img
-          src="https://cdn.discordapp.com/attachments/792429986094907392/814376607225085962/ferris_wheel.gif"
+          src="https://cdn.discordapp.com/attachments/746292114429837313/948179323725181030/Letter_D_GIF.gif"
           alt="logo"
         />
       </div>
       <div className={styles.nav_menu_wrap}>
         <ul>
-          <li>menu1</li>
-          <li>menu2</li>
-          <li>menu3</li>
+          <li>Home</li>
+          <li>Find</li>
+          <li>Messages</li>
+          <li>Settings</li>
         </ul>
 
         <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
-          Get Started
+          Sign in
         </Button>
       </div>
     </div>

@@ -2,12 +2,14 @@
   width: 100vw;
   padding: 0.4rem 10%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  position: fixed;
+  background-color: #E4E6E3;
 
   .nav_logo_wrap {
     img {
-      height: 3rem;
+      height: 4rem;
       width: auto;
     }
   }
@@ -16,14 +18,16 @@
     display: flex;
     align-items: center;
     width: 40%;
-    justify-content: space-evenly;
+    justify-content: space-around;
+
 
     ul {
       list-style-type: none;
       width: 65%;
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: space-between;
+      
     }
   }
 }
