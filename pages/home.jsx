@@ -1,10 +1,15 @@
 import React from "react";
+import MidSect from "../components/homepage/MidSect";
+import TopSection from "../components/homepage/TopSection"
+import BottomSect from "../components/homepage/BottomSect";
 
 const HomePage = () => {
   return (
-    <div>
-      <h3>This will be the homepage</h3>
-    </div>
+    <>
+    <TopSection/>
+    <MidSect/>
+    <BottomSect />
+    </>
   );
 };
 

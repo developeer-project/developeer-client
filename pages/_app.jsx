@@ -28,26 +28,28 @@ export default function App(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}>
-        <MantineProvider
-          theme={{
-            /** Put your mantine theme override here */
-            colorScheme,
-            loader: "bars",
-          }}>
-          <NormalizeCSS />
-          <GlobalStyles />
-            <SessionProvider session={session}>
-          <NotificationsProvider>
+      <SessionProvider session={session}>
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
+        >
+          <MantineProvider
+            theme={{
+              /** Put your mantine theme override here */
+              colorScheme,
+              loader: "bars",
+            }}
+          >
+            <NormalizeCSS />
+            <GlobalStyles />
+            <NotificationsProvider>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
-          </NotificationsProvider>
-            </SessionProvider>
-        </MantineProvider>
-      </ColorSchemeProvider>
+            </NotificationsProvider>
+          </MantineProvider>
+        </ColorSchemeProvider>
+      </SessionProvider>
     </>
   );
 }
