@@ -31,3 +31,29 @@
     }
   }
 }
+
+
+.foot_wrap{
+  width: 100vw;
+  padding: 0.4rem 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  background-color: #E4E6E3;
+  bottom: 0px;
+
+  .foot_logo_wrap {
+    img {
+      height: 4rem;
+      width: auto;
+    }
+  }
+
+  .foot_menu_wrap {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+}
+}
