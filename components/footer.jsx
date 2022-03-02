@@ -10,6 +10,12 @@ const Footer = () => {
       </div>
       <div className={styles.foot_menu_wrap}>
         <p>Footer goes brrrrrrrrrrrrrrr</p>
+        <ul>
+          <li>Home</li>
+          <li>Find</li>
+          <li>Messages</li>
+          <li>Settings</li>
+        </ul>
       </div>
     </div>
   );
