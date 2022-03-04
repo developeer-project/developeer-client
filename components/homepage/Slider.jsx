@@ -1,12 +1,23 @@
 import React from "react";
 
+import styles from "../../styles/homepage-comps/slider.module.scss";
+import SliderCard from "./SliderCard";
+
 const Slider = () => {
   return (
-    <div className="box_wrap">
+    <div className={styles.root_box}>
       {/* <h3>Slider box</h3> */}
-
-      {/* styles */}
-      {/* <style jsx></style> */}
+      {/* slider box */}
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
+      <SliderCard />
     </div>
   );
 };
