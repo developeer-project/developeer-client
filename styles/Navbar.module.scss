@@ -5,7 +5,8 @@
   justify-content: space-around;
   align-items: center;
   position: fixed;
-  background-color: #E4E6E3;
+  background-color: white;
+  border: 5pt solid silver;
 
   .nav_logo_wrap {
     img {
@@ -33,40 +34,31 @@
 }
 
 
+
 .foot_wrap{
   width: 100vw;
-  height: 30em;
+  height: 350pt;
   padding: 0.4rem 10%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 5fr 5fr 5fr;
+  grid-template-rows: 5fr 5fr;
   justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  background-color: #E4E6E3;
-  bottom: 0px;
+  padding: 5pt;
+  align-content: start;
 
-  .foot_logo_wrap {
-    img {
-      height: 4rem;
-      width: auto;
-    }
-  }
+  place-items: center;
+  position: fixed;
+  background-color: pink;
+  bottom: 0px;
+  border: 5pt solid black;
 
   .foot_menu_wrap {
     display: flex;
     align-items: center;
-
+    background-color: green;
     width: 40%;
-    justify-content: space-around;
-}
-      ul {
-      list-style-type: none;
-      width: 65%;
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      justify-content: space-around;
-  
+    justify-content: space-evenly;
 }
 
-
 }
+
