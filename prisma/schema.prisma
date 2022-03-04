@@ -58,22 +58,23 @@ model VerificationToken {
 
 model UserProfile{
   id Int @id @default(autoincrement())
+  name String
   college_name String
   bio String?
   location String
   interests String[]
-  user User @relation(fields: [user_id], references: [id])
   user_id String
-
-  skills_id Skills[] @relation(references: [id])
-  links_id Links[] @relation(references: [id])
-  projects_id Projects[]
+  has_registered Boolean @default(false)
+  // skills_id Int[]
+  user User @relation(fields: [user_id], references: [id])
+  skills_id Int[]
+  links Links?
+  projects Projects[]
 }
 
 model Skills{
   id Int @id @default(autoincrement())
   skill String
-  user_profile_id UserProfile[] @relation(references: [id])
 }
 
 model Links{
@@ -85,7 +86,8 @@ model Links{
   twitter String?
   facebook String?
   other_links String[]
-  user_profile_id UserProfile[] @relation(references: [id])
+  user_id Int
+  user_profile UserProfile @relation(fields: [user_id], references: [id])
 }
 
 model Projects{
