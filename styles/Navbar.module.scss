@@ -6,7 +6,7 @@
   align-items: center;
   position: fixed;
   background-color: white;
-  border: 5pt solid silver;
+  border: 5pt solid orange;
 
   .nav_logo_wrap {
     img {
@@ -36,35 +36,59 @@
   height: 350pt;
   display: flex;
   position: fixed;
-  background-color: pink;
+  
   bottom: 0px;
-  border: 5pt solid red;
+  border: 5pt solid orange;
 
   .foot_left_wrap {
-    flex:50%;
-   
-    background-color: purple;
+    flex:40%;
+  
+    /*background-color: purple;*/
+    background-color: silver;
+    border: 5pt solid orange;
 
     img {
-      height: 10rem;
-      width: auto;
+      display: flex;
+      width:75%;
+      padding: 10%;
+      justify-content: center;
+      
+    }
+
+    .text_below_logo{
+      display: flex;
+      justify-content: center;
+      
+  
     }
   }
 
   .foot_right_wrap {
-    background-color: yellow;
-    flex:50%;
+    /*background-color: yellow;*/
+    background-color: silver;
+    flex:60%;
+    border: 5pt solid orange;
 
 
     .foot_menu_wrap {
       display: grid;
-      width: 200pt;
-      grid-template-columns: 50pt 50pt 50pt 50pt 50pt;
-      grid-template-rows: 5fr 5fr;
+      width: 100%;
+      grid-template-columns: 100pt 100pt 100pt 100pt 100pt;
+      padding: 10%;
       align-items: center;
-      background-color: green;
-      width: 40%;
-      justify-content: space-evenly;
-    }
+      justify-items: center;
+      /*background-color: green;*/
+      border: 5pt solid orange;
+      background-color: silver;
+      justify-content: center;
+     
+
+      /*ul{
+        list-style-type: none;
+
+      }*/
+
+
+    
   }
-}
+}}
