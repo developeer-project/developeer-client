@@ -1,0 +1,1 @@
+yeh file git fetch ke baad aajani chahiye, aagayi ho toh delete kar dena and git push kar dena
