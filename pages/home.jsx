@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MidSect from "../components/homepage/MidSect";
-import TopSection from "../components/homepage/TopSection"
+import TopSection from "../components/homepage/TopSection";
 import BottomSect from "../components/homepage/BottomSect";
 
+import Head from "next/head";
+
+const pagetitle = () => "Develo<peer/>";
+
 const HomePage = () => {
+  useEffect(() => {
+    const threeScript = document.createElement("script");
+    threeScript.setAttribute("id", "threeScript");
+    threeScript.setAttribute(
+      "src",
+      "https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"
+    );
+    document.getElementsByTagName("head")[0].appendChild(threeScript);
+    return () => {
+      if (threeScript) {
+        threeScript.remove();
+      }
+    };
+  }, []);
+
   return (
     <>
-    <TopSection/>
-    <MidSect/>
-    <BottomSect />
+      <Head>
+        <title>{pagetitle}</title>
+      </Head>
+      <TopSection />
+      <MidSect />
+      <BottomSect />
     </>
   );
 };

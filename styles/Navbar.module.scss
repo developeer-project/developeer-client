@@ -1,11 +1,13 @@
 .nav_wrap {
   width: 100vw;
-  padding: 0.4rem 10%;
+  padding: 0.2rem 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 20;
+  box-shadow: rgba(100, 100, 100, 0.1) 0px 4px 6px -1px, rgba(145, 145, 145, 0.06) 0px 2px 4px -1px;
 
   .nav_logo_wrap {
     img {

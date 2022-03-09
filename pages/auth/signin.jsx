@@ -41,7 +41,6 @@ const ProviderOpts = ({ providers }) => {
         onClick={() => signIn(provider.id)}
         key={provider.id}
         size="lg"
-        color="indigo"
         fullWidth
       >
         Sign in with {provider.name}
@@ -81,17 +80,17 @@ const EmailForm = ({ csrfToken }) => {
           id="email"
           name="email"
           // icon = { <MailIcon/> }
-          placeholder="Your email"
+          placeholder="Enter your email"
           size="md"
           onChange={validateEmail}
         />
 
         <Button
-          color="indigo"
           size="lg"
           disabled={!valid}
           fullWidth
           type="submit"
+          variant="light"
         >
           Sign in with Email
         </Button>

@@ -18,6 +18,8 @@ specifiers:
   react-dom: ^17.0.0
   react-markdown: ^8.0.0
   sass: ^1.49.7
+  three: ^0.138.2
+  vanta: ^0.5.21
 
 dependencies:
   '@mantine/core': 3.6.7_204defb1903c7e962da5088655fc41d9
@@ -35,6 +37,8 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
   react-markdown: 8.0.0_a0c521d4794c7ad97f5f4c1c4a7d5818
   sass: 1.49.7
+  three: 0.138.2
+  vanta: 0.5.21
 
 devDependencies:
   '@types/react': 17.0.39
@@ -1509,6 +1513,10 @@ packages:
     resolution: {integrity: sha512-xGPXiFVl4YED9Jh7Euv2V220mriG9u4B2TA6Ybjc1catrstKD2PpIdU3U0RKpkVBC2EhmL/F0sPCr9vrFTNRag==}
     dev: false
 
+  /three/0.138.2:
+    resolution: {integrity: sha512-l49+mdqpevKIk7ByLmt7cc5RdSwSnZ6rP1cLe8VCI/++c0/6AFYyHw6xjT2VyXYxodCnDSw7iARjKL2MlHVCOg==}
+    dev: false
+
   /through/2.3.8:
     resolution: {integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=}
     dev: false
@@ -1659,6 +1667,10 @@ packages:
       diff: 5.0.0
       kleur: 4.1.4
       sade: 1.8.1
+    dev: false
+
+  /vanta/0.5.21:
+    resolution: {integrity: sha512-UYW6rYXVl8klFbQrhmgDMZ7SCys9hKROIuTlq5M+v6j346BPu1wqBwVRQPHiYsuooWkUYY6HSXV/9HrJBSuo6g==}
     dev: false
 
   /vfile-message/3.1.0:

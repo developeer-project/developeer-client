@@ -19,6 +19,10 @@ export default function App(props) {
   const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
+  console.log("version: vanta effect and slider base 1.0");
+
+  // print version number in the console
+
   return (
     <>
       <Head>
