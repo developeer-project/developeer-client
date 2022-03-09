@@ -49,13 +49,16 @@
 
 import Navbar from "./Navbar";
 import Footer from "./footer";
+import CenterMain from "./centermain";
 
 export default function Layout({ children }) {
   return (
     <>
       <Navbar />
       <main>{children}</main>
+      <CenterMain />
       <Footer />
     </>
   );
 }
+
