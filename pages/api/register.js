@@ -1,11 +1,9 @@
-import { getSession } from 'next-auth/react';
-import { PrismaClient } from "@prisma/client";
+import {validate} from "../../lib/validate"
+import { profileSchema } from '../../../schemas/Profile';
+import prisma from '../../lib/prisma';
 
-const prisma = new PrismaClient();
-
-export default async function register(req, res, next){
+export async function register(req, res, next){
       if(req.method === 'POST'){
-
             const {
                   name,
                   college_name,
@@ -15,7 +13,6 @@ export default async function register(req, res, next){
                   user_id,
                   has_registered,
                   skills_id,
-                  
                   portfolio_link,
                   linkedin,
                   github,
@@ -52,3 +49,5 @@ export default async function register(req, res, next){
             res.json({'message':'profile saved'})
       }
 }
+
+export default validate(profileSchema, register);

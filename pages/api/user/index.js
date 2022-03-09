@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../../../lib/prisma";
 
 export default async function getUser(req, res, next){
       if(req.method === 'GET'){
@@ -9,6 +7,6 @@ export default async function getUser(req, res, next){
                         has_registered: true,
                   },
             });
-            res.send({'message':user})
+            res.send({user})
       }
 }

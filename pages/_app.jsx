@@ -30,22 +30,24 @@ export default function App(props) {
       </Head>
       <ColorSchemeProvider
         colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}>
+        toggleColorScheme={toggleColorScheme}
+      >
         <MantineProvider
           theme={{
             /** Put your mantine theme override here */
             colorScheme,
             loader: "bars",
-          }}>
+          }}
+        >
           <NormalizeCSS />
           <GlobalStyles />
-            <SessionProvider session={session}>
-          <NotificationsProvider>
+          <SessionProvider session={session}>
+            <NotificationsProvider>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
-          </NotificationsProvider>
-            </SessionProvider>
+            </NotificationsProvider>
+          </SessionProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </>

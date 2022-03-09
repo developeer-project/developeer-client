@@ -1,7 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { validate } from '../../../lib/validate';
+import { profileSchema } from '../../../schemas/Profile';
+import  prisma from "../../../lib/prisma"
 
-export default async function getUser(req, res, next){
+export  async function userApi(req, res, next){
       if(req.method === 'GET'){
             const { id }  = req.query;
             console.log(id)
@@ -14,6 +15,7 @@ export default async function getUser(req, res, next){
       }
 
       if(req.method === 'DELETE'){
+            const { id }  = req.query;
             const user = await prisma.UserProfile.delete({
                   where:{
                         id: Number(id),
@@ -33,3 +35,5 @@ export default async function getUser(req, res, next){
             res.send({'message':"user detail(s) updated"})
       }
 }
+
+export default validate(profileSchema, userApi);
