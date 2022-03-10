@@ -8,6 +8,7 @@
   top: 0;
   z-index: 20;
   box-shadow: rgba(100, 100, 100, 0.1) 0px 4px 6px -1px, rgba(145, 145, 145, 0.06) 0px 2px 4px -1px;
+  background-color: #F0F8FF;
 
   .nav_logo_wrap {
     img {
@@ -24,10 +25,26 @@
 
     ul {
       list-style-type: none;
+      
       width: 65%;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+      font-size: 1.0rem;
+      font-weight: bold;
+      padding: 0.2rem 0.5 rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #fcf7ff;
+        color: grey;
+      }
     }
   }
 }

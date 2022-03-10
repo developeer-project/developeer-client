@@ -1,4 +1,5 @@
 import Script from "next/script";
+
 import { useEffect, useState, useRef } from "react";
 // import NET from "vanta/dist/vanta.net.min.js";
 import * as THREE from "three";
@@ -26,6 +27,7 @@ const TopSection = () => {
         })
       );
     }
+
     return () => {
       if (vantaEff) vantaEff.destroy();
     };
@@ -37,7 +39,10 @@ const TopSection = () => {
         <Slider />
         <main className={styles.mid}>
           <div ref={vantaRef} className={styles.vanta_container}></div>
-          Vanta goes here
+          <div className={styles.hero_header}>
+            <h1>Ideate Connect \n Build</h1>
+            <h4></h4>
+          </div>
         </main>
         <Slider />
       </div>

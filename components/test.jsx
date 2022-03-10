@@ -3,7 +3,7 @@ import { Title } from "@mantine/core";
 import { Loader } from "@mantine/core";
 import { Avatar, Badge } from "@mantine/core";
 
-import styles from "../styles/Homepage.module.scss";
+// import styles from "../styles/Homepage.module.scss";
 const TestPage = () => {
   const avatar = (
     <Avatar alt="Avatar for badge" size={24} mr={5} src="image-link" />
@@ -11,7 +11,7 @@ const TestPage = () => {
   return (
     <>
       <h1 className="stylename">
-        html Example 1 --: styles are taken from 
+        html Example 1 --: styles are taken from
         <span>styles/globals.scss </span>
       </h1>
 
