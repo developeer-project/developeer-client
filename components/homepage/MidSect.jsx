@@ -8,17 +8,17 @@ const MidSect = () => {
       <div className={styles.wrap}>
         <div className={styles.header}>
           <Title className={styles.heading} order={1}>
-            Section 2 title
+            Workflow
           </Title>
-          <Title className={styles.sub_heading} order={6}>
+          {/* <Title className={styles.sub_heading} order={6}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Repellendus, rerum?
-          </Title>
+          </Title> */}
         </div>
         <div className={styles.card_wrap}>
-          <WorkFlowCard />
-          <WorkFlowCard />
-          <WorkFlowCard />
+          <WorkFlowCard heading="Heading 1" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at." image="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true" />
+          <WorkFlowCard heading="Heading 2" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at." image="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true" />
+          <WorkFlowCard heading="Heading 3" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at." image="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true" />
         </div>
       </div>
     </section>

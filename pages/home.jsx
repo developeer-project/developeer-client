@@ -5,6 +5,7 @@ import BottomSect from "../components/homepage/BottomSect";
 
 import Head from "next/head";
 
+import { Parallax, ParallaxLayer } from "@reactspring/parallax";
 const pagetitle = () => "Develo<peer/>";
 
 const HomePage = () => {
@@ -28,9 +29,13 @@ const HomePage = () => {
       <Head>
         <title>{pagetitle}</title>
       </Head>
+
       <TopSection />
+
       <MidSect />
+        
       <BottomSect />
+
     </>
   );
 };
