@@ -67,7 +67,6 @@ const WorkFlowCard = ({heading, content, image}) => {
           
           .container .card .face.face1 .content img{
               max-width: 100px;
-              margin:auto auto;
           }
           
           .container .card .face.face1 .content h3{
