@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className={styles.nav_wrap}>
       <div className={styles.nav_logo_wrap}>
         <img
-          src="https://cdn.discordapp.com/attachments/746292114429837313/948179323725181030/Letter_D_GIF.gif"
+          src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png"
           alt="logo"
         />
       </div>

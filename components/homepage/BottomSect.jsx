@@ -6,7 +6,7 @@ const BottomSect = () => {
         <div className={styles.foot_wrap}>
       <div className={styles.foot_left_wrap}>
         <img
-          src="https://cdn.discordapp.com/attachments/746292114429837313/948179323725181030/Letter_D_GIF.gif"
+          src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png"
           alt="logo"
         />
         <div className={styles.text_below_logo}>

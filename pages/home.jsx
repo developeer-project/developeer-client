@@ -5,7 +5,7 @@ import BottomSect from "../components/homepage/BottomSect";
 
 import Head from "next/head";
 
-//import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import Flip from "react-reveal";
 const pagetitle = () => "Develo<peer/>";
 
 const HomePage = () => {
@@ -26,13 +26,18 @@ const HomePage = () => {
 
   return (
     <>
+        
       <Head>
         <title>{pagetitle}</title>
       </Head>
 
+
       <TopSection />
 
-      <MidSect />
+      <Flip bottom>
+
+        <MidSect />
+      </Flip>
         
       <BottomSect />
 
