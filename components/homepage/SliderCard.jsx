@@ -14,9 +14,14 @@ const SliderCard = (props) => {
         .card_box {
           min-width: 40%;
           margin: 4%;
-          background-color: #fefedf;
+          background: rgb(32, 36, 43);
+          background: radial-gradient(
+            circle,
+            rgba(32, 36, 43, 1) 0%,
+            rgba(51, 56, 65, 0.8) 100%
+          );
+          border-radius: 10px;
           height: 9rem;
-          box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
           display: flex;
           justify-content: center;
           align-items: center;

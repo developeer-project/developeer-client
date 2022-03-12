@@ -40,8 +40,16 @@ const TopSection = () => {
         <main className={styles.mid}>
           <div ref={vantaRef} className={styles.vanta_container}></div>
           <div className={styles.hero_header}>
-            {/* <h1>Ideate Connect \n Build</h1> */}
-            <h4></h4>
+            <div className={styles.hero_text_wrap}>
+              <h1>
+                Ideate.
+                <br />
+                Connect.
+                <br />
+                Aur kuch toh.
+              </h1>
+              <h4></h4>
+            </div>
           </div>
         </main>
         <Slider />
