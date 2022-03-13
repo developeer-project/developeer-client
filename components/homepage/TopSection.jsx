@@ -48,8 +48,8 @@ const TopSection = () => {
                 <br />
                 Aur kuch toh.
               </h1>
-              <h4></h4>
             </div>
+            {/* <div className={styles.btn_grad}>Take me there</div> */}
           </div>
         </main>
         <Slider />
