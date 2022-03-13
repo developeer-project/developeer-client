@@ -7,8 +7,13 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  box-shadow: rgba(100, 100, 100, 0.1) 0px 4px 6px -1px, rgba(145, 145, 145, 0.06) 0px 2px 4px -1px;
-  background-color: #F0F8FF;
+  // box-shadow: rgba(100, 100, 100, 0.1) 0px 4px 6px -1px, rgba(145, 145, 145, 0.06) 0px 2px 4px -1px;
+  // background-color: #F0F8FF;
+  background-color: #202428;
+
+  &.active{
+    background-color: red;
+  }
 
   .nav_logo_wrap {
     img {
@@ -34,7 +39,7 @@
 
     a {
       text-decoration: none;
-      color: #000;
+      color: #fff;
       font-size: 1.0rem;
       font-weight: bold;
       padding: 0.2rem 0.5 rem;
@@ -42,9 +47,15 @@
       transition: all 0.3s ease-in-out;
 
       &:hover {
-        background-color: #fcf7ff;
-        color: grey;
+        // background-color: #000;
+        color: #000;
       }
     }
   }
 }
+
+// .nav_wrap{
+//   &.active{
+//     background-color: red;
+//   }
+// }
