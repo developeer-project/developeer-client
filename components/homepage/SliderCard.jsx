@@ -12,7 +12,7 @@ const SliderCard = (props) => {
       {/* static styles */}
       <style jsx>{`
         .card_box {
-          min-width: 40%;
+          width: 40%;
           margin: 4%;
           background: rgb(32, 36, 43);
           background: radial-gradient(
