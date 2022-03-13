@@ -1,16 +1,31 @@
 import React from "react";
 import { Button } from "@mantine/core";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 import styles from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
   const router = useRouter();
+
+  const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () =>{
+    if(window.scrollY >= 30){
+      console.log("here")
+      setNavbar(true);
+    }else{
+      setNavbar(false);
+    }
+  }
+  if( typeof window !== "undefined" ){
+    window.addEventListener('scroll', changeBackground);
+  }
   return (
-    <div className={styles.nav_wrap}>
+    <div className={navbar ? `${styles.nav_wrap} ${styles.active}` : styles.nav_wrap}>
       <div className={styles.nav_logo_wrap}>
         <img
-          src="https://cdn.discordapp.com/attachments/746292114429837313/948179323725181030/Letter_D_GIF.gif"
+          src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png"
           alt="logo"
         />
       </div>
