@@ -1,9 +1,15 @@
+.wrap{
+    background-color: #F0F8FF;
+    overflow: hidden;
+}
+
 .styles_wrap {
     // background: #f00;
     border: 1px dotted pink;
     width: 96%;
     margin: 1rem auto;
     // height: 93vh; // TODO: make this dynamic
+    overflow: hidden;
 }
 
 .card_wrap {

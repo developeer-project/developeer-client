@@ -1,11 +1,12 @@
 .foot_wrap {
-    width: 100vw;
+    width: 100%;
     height: 350pt;
     display: flex;
     
     
     bottom: 0px;
     //border: 5pt solid orange;
+    overflow: hidden;
   
     .foot_left_wrap {
       flex:40%;

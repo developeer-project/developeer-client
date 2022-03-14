@@ -1,5 +1,5 @@
 .root_box {
-    width: 22vw;
+    width: 10vw;
     height: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -14,7 +14,7 @@
 @media only screen and (max-width: 1080px) {
     .root_box {
         width: 100%;
-        height: 15vh;
+        height: 7.5vh;
     }
 }
 
