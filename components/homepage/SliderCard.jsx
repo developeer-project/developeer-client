@@ -12,8 +12,14 @@ const SliderCard = (props) => {
       {/* static styles */}
       <style jsx>{`
         .card_box {
-          width: 75%;
-          margin: 4%;
+          width: 45%;
+
+          margin: 2%;
+          height: 8rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
           background: rgb(32, 36, 43);
           background: radial-gradient(
             circle,
@@ -21,10 +27,6 @@ const SliderCard = (props) => {
             rgba(51, 56, 65, 0.8) 100%
           );
           border-radius: 10px;
-          height: 9rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
         }
       `}</style>
       {/* dynamic  styles */}

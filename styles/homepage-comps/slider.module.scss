@@ -1,9 +1,9 @@
 .root_box {
-    width: 10vw;
+    width: 20vw;
     height: 100%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-content: center;
     overflow: hidden;
     background-color: #20242B;
@@ -11,10 +11,9 @@
 
 }
 
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 72rem) {
     .root_box {
-        width: 100%;
-        height: 7.5vh;
+        display: none;
     }
 }
 

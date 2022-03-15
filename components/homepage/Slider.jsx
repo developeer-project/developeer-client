@@ -6,58 +6,58 @@ import SliderCard from "./SliderCard";
 const Slider = () => {
   return (
     <>
-    <div className={styles.root_box}>
+      <div className={styles.root_box}>
+        {/* <h3>Slider box</h3> */}
+        {/* slider box */}
+
+        {/* <marquee
+          behaviour="scroll"
+          direction="down"
+          scrollamount="2"
+          behavior="scroll"
+          scrolldelay="85"
+          height="90%"
+        > */}
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        {/* </marquee> */}
+      </div>
+
+      {/* <div className={styles.root_box}> */}
       {/* <h3>Slider box</h3> */}
       {/* slider box */}
 
-      <marquee
-        behaviour="scroll"
-        direction="down"
-        scrollamount="2"
-        behavior="scroll"
-        scrolldelay="85"
-        height="90%"
-        >
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      </marquee>
-      
-    </div>
-
-    <div className={styles.root_box}>
-      {/* <h3>Slider box</h3> */}
-      {/* slider box */}
-
-      <marquee
-        behaviour="scroll"
-        direction="up"
-        scrollamount="2"
-        behavior="scroll"
-        scrolldelay="85"
-        height="90%"
-        >
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      <SliderCard />
-      </marquee>
-      
-    </div>
-  </>
+      {/* <marquee */}
+      {/* behaviour="scroll" */}
+      {/* direction="up" */}
+      {/* scrollamount="2" */}
+      {/* behavior="scroll" */}
+      {/* scrolldelay="85" */}
+      {/* height="90%" */}
+      {/* > */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* <SliderCard /> */}
+      {/* </marquee> */}
+      {/* </div> */}
+    </>
   );
 };
 
