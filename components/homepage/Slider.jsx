@@ -38,7 +38,7 @@ const Slider = () => {
 
       <marquee
         behaviour="scroll"
-        direction="down"
+        direction="up"
         scrollamount="2"
         behavior="scroll"
         scrolldelay="85"

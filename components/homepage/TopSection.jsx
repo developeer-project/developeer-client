@@ -46,7 +46,7 @@ const TopSection = () => {
                 <br />
                 Connect.
                 <br />
-                Aur kuch toh.
+                Develop.
               </h1>
             </div>
             {/* <div className={styles.btn_grad}>Take me there</div> */}
