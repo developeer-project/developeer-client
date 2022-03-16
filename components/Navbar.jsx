@@ -1,29 +1,20 @@
 import React from "react";
+import Link from "next/link";
 import { Button } from "@mantine/core";
 import { useRouter } from "next/router";
+import { Anchor } from "@mantine/core";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 import styles from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
   const router = useRouter();
-
+  const { data: session, status: authStatus } = useSession();
   const [navbar, setNavbar] = useState(false);
 
-  const changeBackground = (e) => {
-    console.log("scroll event called");
-    console.log(e);
-  };
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", changeBackground);
-  }
   return (
-    <div
-      onScroll={changeBackground}
-      className={
-        navbar ? `${styles.nav_wrap} ${styles.active}` : styles.nav_wrap
-      }
-    >
+    <div className={styles.nav_wrap}>
       <div className={styles.nav_logo_wrap}>
         <img
           src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png"
@@ -32,26 +23,29 @@ const Navbar = () => {
       </div>
       <div className={styles.nav_menu_wrap}>
         <ul>
-          <a href="#">
-            <li>Home</li>
-          </a>
-
-          <a href="#">
-            <li>Find</li>
-          </a>
-
-          <a href="#">
-            <li>Messages</li>
-          </a>
+          <li>
+            {authStatus === "authenticated" && (
+              <div className={styles.drop_nav}>
+                <Button variant="outline">{session.user.name} </Button>
+                <div className={styles.drop_nav_items}>
+                  <Button variant="subtle" compact>
+                    Settings
+                  </Button>
+                </div>
+              </div>
+            )}
+          </li>
         </ul>
-
-        <Button
-          onClick={() => router.push("./api/auth/signin")}
-          variant="gradient"
-          gradient={{ from: "orange", to: "red" }}
-        >
-          Sign in
-        </Button>
+        <Link href="/app-main" passHref>
+          <Button
+            href="/app"
+            passHref
+            variant="gradient"
+            gradient={{ from: "orange", to: "red" }}
+          >
+            Get started
+          </Button>
+        </Link>
       </div>
     </div>
   );

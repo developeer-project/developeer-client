@@ -14,7 +14,7 @@ const SliderCard = (props) => {
         .card_box {
           width: 45%;
 
-          margin: 2%;
+          margin: 4px;
           height: 8rem;
           display: flex;
           justify-content: center;

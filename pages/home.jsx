@@ -26,21 +26,17 @@ const HomePage = () => {
 
   return (
     <>
-        
       <Head>
         <title>{pagetitle}</title>
       </Head>
 
-
       <TopSection />
 
       <Flip bottom>
-
         <MidSect />
       </Flip>
-        
-      <BottomSect />
 
+      <BottomSect />
     </>
   );
 };
