@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export default async function getUser(req, res, next){
       if(req.method === 'GET'){
-            const user = await prisma.Projects.findMany({
+            const projects = await prisma.Projects.findMany({
                   select:{
                         id: true,
                         title: true,
@@ -15,6 +15,6 @@ export default async function getUser(req, res, next){
                         user_profile_id:true,
                   },
             });
-            res.send({'message':user})
+            res.send({projects})
       }
 }
