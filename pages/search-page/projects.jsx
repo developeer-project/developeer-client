@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useState } from 'react';
 import Card from "../../components/search-page/projects/Card";
 import ProfileCard from "../../components/search-page/projects/Test";
 
@@ -7,14 +7,46 @@ import styles from "../../styles/search-page/search.module.scss";
 
 const projects = ({ projects }) => {
       
-  return (
-    <div className={styles.box2} >
-          {projects.map((project) => (
-                <Card project={project}/>
-            ))}
-          {/* <ProfileCard/> */}
+      const [query, setQuery] = useState("");
+      const [title, setTitle] = useState("");
+      const [userData, setUserData] = useState(projects);
+      const [userSearchData, setUserSearchData] = useState(projects);
+      // const [projects, setProjects] = useState(projects);
+      const search = () => {
+            const newData = userData.filter(project => project.title == (title == '' ? project.title : title))
+            setUserSearchData(newData);
+      }
 
-    </div>
+  return (
+      <>
+            <div className={styles.searchBar}>
+                  <input placeholder='Query' onChange={(e) => setTitle(e.target.value)}/>
+                  
+                  <button type="submit" onClick={() => search()}>Search</button>
+            </div>
+            <div className={styles.box2} >
+                  {userSearchData.map((project) => (
+                        <Card project={project}/>
+                        ))}
+            </div>
+
+            {/* <div className={styles.box2}>
+                  {projects.filter(project => {
+                        if (query === ""){
+                              return project;
+                        }else if(project.title.toLowerCase().includes(query.toLowerCase())){
+                              return project
+                        }
+                  }).map((project) => ( 
+                        <div >
+                        <Card project={project} />
+                        </div>
+                  ))
+                  }
+                  
+            </div> */}
+            
+      </>
   )
 }
 

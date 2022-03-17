@@ -1,37 +1,17 @@
 import React from 'react'
 import { useState } from 'react';
-import styles from "../../../styles/search-page/card.module.css";
-
-// const Card = ({ projects }) => {
-
-//   //     {/* <ul>
-//   //           {projects.map((project) => (
-//   //             <div>
-//   //             <li> { project.id } </li>
-//   //             <li> { project.title } </li>
-//   //             <li> { project.repo_link ? project.repo_link : "Empty" } </li>
-//   //             <li> { project.tech_stack } </li>
-//   //             <li> { project.description } </li>
-//   //             <li> { project.link } </li>
-//   //             <li> { project.user_profile_id } </li>
-//   //             </div>
-
-//   //           ))}
-//   //     </ul> */}
-
-// }
-    
-// export default Card;
+import styles from "../../../styles/search-page/card.module.scss";
 
 const Card=({ project })=>{
       
   return(
   <>
-
     <div className="container">
           <div className="card">
                 <div className="imgBx">
                 <img src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png" alt="nike-air-shoe"/>
+                {/* <img src="https://cdn.discordapp.com/attachments/951426015404654612/953703986203074580/Valley-Taurus-Mountains-Turkey.jpg" alt="nike-air-shoe"/> */}
+                
                 </div>
 
                 <div className="contentBx">
@@ -43,18 +23,18 @@ const Card=({ project })=>{
                       <h3>Tech Stack:</h3>
                     <div className='grid-box1'>
 
-                      <span>Stack1</span>
+                      {/* <span>Stack1</span>
                       <span>Stack1</span>
                       <span>Stack1</span>
                       <span>Stack1</span>         
                       <span>Stack1</span>         
-                      <span>Stack1</span>         
+                      <span>Stack1</span>          */}
 
 
-                      {/* {project.tech_stack.map((ts) =>(
+                      {project.tech_stack.map((ts) =>(
                         <span>{ts}</span>
 
-                      ))} */}
+                      ))}
                     </div>
                     
 
@@ -150,7 +130,7 @@ const Card=({ project })=>{
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%) rotate(20deg);
-          width: 90px;
+          width: 150px;
       }
       
       .container .card .contentBx {
@@ -170,6 +150,12 @@ const Card=({ project })=>{
       .container .card .contentBx h2 {
           position: relative;
           font-weight: 600;
+          letter-spacing: 1px;
+          color: #fff;
+      }
+      .container .card .contentBx p{
+          position: relative;
+          font-weight: 400;
           letter-spacing: 1px;
           color: #fff;
       }
