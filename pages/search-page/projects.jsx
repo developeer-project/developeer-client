@@ -31,17 +31,21 @@ const projects = ({ projects, techStacks }) => {
 
       }
 
+      let dropdown = techStacks.map((techStack) => (
+            <option value={techStack.tech_stack}>{techStack.tech_stack}</option>
+      ))
+
   return (
       <>
             <div className={styles.searchBar}>
+                  <select onChange={(e) => setTechStack(e.target.value)}>
+                        <option value="">
+                        </option>
+                        {dropdown}
+                  </select>
                   <input placeholder='Query' onChange={(e) => setTitle(e.target.value)}/>
                   
                   <button type="submit" onClick={() => search()}>Search</button>
-                  <select onChange={(e) => setTechStack(e.target.value)}>
-                        {techStacks.map((techStack) => (
-                              <option value={techStack.tech_stack}>{techStack.tech_stack}</option>
-                        ))}
-                  </select>
             </div>
             <div className={styles.box2} >
                   {userSearchData.map((project) => (
@@ -72,7 +76,6 @@ const projects = ({ projects, techStacks }) => {
 export async function getServerSideProps(){
       const prisma = new PrismaClient();
       const res = await (await fetch("http://localhost:3000/api/project/")).json();
-      // const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}`)).json();
 
       const techStacks = await prisma.TechStack.findMany({
             select:{
@@ -83,7 +86,6 @@ export async function getServerSideProps(){
             props:{
                   projects:res.projects,
                   techStacks,
-                  // searchedProject: response.projects,
             },
       };
 }
