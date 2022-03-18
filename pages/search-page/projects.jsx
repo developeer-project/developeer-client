@@ -4,17 +4,31 @@ import Card from "../../components/search-page/projects/Card";
 import ProfileCard from "../../components/search-page/projects/Test";
 
 import styles from "../../styles/search-page/search.module.scss";
+// import { prisma } from '../../prisma/db.ts';
 
-const projects = ({ projects }) => {
+import { PrismaClient } from "@prisma/client";
+
+const projects = ({ projects, techStacks }) => {
       
       const [query, setQuery] = useState("");
       const [title, setTitle] = useState("");
       const [userData, setUserData] = useState(projects);
       const [userSearchData, setUserSearchData] = useState(projects);
-      // const [projects, setProjects] = useState(projects);
-      const search = () => {
-            const newData = userData.filter(project => project.title == (title == '' ? project.title : title))
-            setUserSearchData(newData);
+      const [techStack, setTechStack] = useState("");
+
+      // const search = () => {
+      //       const newData = userData
+      //       .filter(project => project.title == (title == '' ? project.title : title))
+      //       // .filter(stack => stack.techStack == (techStack == '' ? stack.techStack : techStack))
+      //       setUserSearchData(newData);
+      // }
+
+      const search = async () => {
+            console.log("IN HERE")
+            const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}`)).json();
+            console.log("response is::::",response.searchedProject);
+            setUserSearchData(response.searchedProject);
+
       }
 
   return (
@@ -23,6 +37,11 @@ const projects = ({ projects }) => {
                   <input placeholder='Query' onChange={(e) => setTitle(e.target.value)}/>
                   
                   <button type="submit" onClick={() => search()}>Search</button>
+                  <select onChange={(e) => setTechStack(e.target.value)}>
+                        {techStacks.map((techStack) => (
+                              <option value={techStack.tech_stack}>{techStack.tech_stack}</option>
+                        ))}
+                  </select>
             </div>
             <div className={styles.box2} >
                   {userSearchData.map((project) => (
@@ -51,16 +70,20 @@ const projects = ({ projects }) => {
 }
 
 export async function getServerSideProps(){
-
+      const prisma = new PrismaClient();
       const res = await (await fetch("http://localhost:3000/api/project/")).json();
-      // const projects = await res.json();
-      // console.log(res.projects)
+      // const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}`)).json();
 
-      // console.log("get static props",projects)
+      const techStacks = await prisma.TechStack.findMany({
+            select:{
+                  tech_stack: true,
+            }
+      });
       return{
             props:{
-                  // projects: data,
                   projects:res.projects,
+                  techStacks,
+                  // searchedProject: response.projects,
             },
       };
 }

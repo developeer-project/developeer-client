@@ -100,3 +100,8 @@ model Projects{
   user_profile_id Int
   user_profile UserProfile @relation(fields: [user_profile_id], references: [id])
 }
+
+model TechStack{
+  id Int @id @default(autoincrement())
+  tech_stack String
+}
