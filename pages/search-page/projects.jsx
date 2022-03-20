@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Card from "../../components/search-page/projects/Card";
 import ProfileCard from "../../components/search-page/projects/Test";
 
@@ -8,13 +8,21 @@ import styles from "../../styles/search-page/search.module.scss";
 
 import { PrismaClient } from "@prisma/client";
 
-const projects = ({ projects, techStacks }) => {
+import { Pagination } from '@mantine/core';
+import { usePagination } from '@mantine/hooks';
+
+const projects = ({ projects, techStacks, totalCount }) => {
       
       const [query, setQuery] = useState("");
       const [title, setTitle] = useState("");
       const [userData, setUserData] = useState(projects);
       const [userSearchData, setUserSearchData] = useState(projects);
       const [techStack, setTechStack] = useState("");
+
+      const[currentPage, setCurrentPage] = useState(1);
+      const[perPage, setPerPage] = useState(1);
+
+      const itemsPerPage = 1; 
 
       // const search = () => {
       //       const newData = userData
@@ -35,6 +43,19 @@ const projects = ({ projects, techStacks }) => {
             <option value={techStack.tech_stack}>{techStack.tech_stack}</option>
       ))
 
+      const totalPageCount = Math.ceil(totalCount/itemsPerPage);
+      const pageChange = async (page) => {
+            // setCurrentPage(page)
+            console.log("Page   ",page)
+
+            const response = await (await fetch(`http://localhost:3000/api/project/?currPage=${page}`)).json();
+            // console.log("PageRESponseCurrPAge   ",currentPage)
+            // console.log("PageRESponseProjects   ",response.projects)
+
+            setUserSearchData(response.projects); 
+      }
+
+      // const pagination = usePagination({total:totalPageCount, initialPage: 1, onChange: (page)=> pageChange})
   return (
       <>
             <div className={styles.searchBar}>
@@ -69,6 +90,15 @@ const projects = ({ projects, techStacks }) => {
                   
             </div> */}
             
+            <Pagination onChange={page => pageChange(page)} total={totalPageCount} initialPage={1} siblings={1}  />
+            {/* <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={totalPageCount}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      /> */}
+      {}
       </>
   )
 }
@@ -86,6 +116,7 @@ export async function getServerSideProps(){
             props:{
                   projects:res.projects,
                   techStacks,
+                  totalCount: res.totalCount,
             },
       };
 }
