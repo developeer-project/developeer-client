@@ -42,10 +42,10 @@ const Card=({ project })=>{
 
                 <div className="color">
 
-                      <h3>Color :</h3>
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                      <h3>Domain :</h3>
+                      <span>Blockchain</span>
+                      {/* <span></span>
+                      <span></span> */}
                 </div>
                 </div>
 
@@ -213,23 +213,13 @@ const Card=({ project })=>{
       .container .card .contentBx .color span {
           width: 20px;
           height: 20px;
-          background: #ff0;
           border-radius: 50%;
           margin: 0 5px;
           cursor: pointer;
+          color: red;
       }
       
-      .container .card .contentBx .color span:nth-child(2) {
-           background: #1BBFE9;
-      }
-      
-      .container .card .contentBx .color span:nth-child(3) {
-           background: #1B2FE9;
-      }
-      
-      .container .card .contentBx .color span:nth-child(4) {
-           background: #080481;
-      }
+
 
       .grid-box1{
         display: grid;
@@ -241,7 +231,17 @@ const Card=({ project })=>{
       `
     }
 </style>
-
+{/* .container .card .contentBx .color span:nth-child(2) {
+        background: #1BBFE9;
+       }
+   
+        .container .card .contentBx .color span:nth-child(3) {
+        background: #1B2FE9;
+        }
+   
+        .container .card .contentBx .color span:nth-child(4) {
+        background: #080481;
+        } */}
   </>
   );
   }
