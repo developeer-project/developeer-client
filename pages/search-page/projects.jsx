@@ -9,7 +9,8 @@ import styles from "../../styles/search-page/search.module.scss";
 import { PrismaClient } from "@prisma/client";
 
 import { Pagination } from '@mantine/core';
-import { usePagination } from '@mantine/hooks';
+import { useRouter } from 'next/router';
+import { route } from 'next/dist/server/router';
 
 const projects = ({ projects, techStacks, totalCount }) => {
       
@@ -22,7 +23,7 @@ const projects = ({ projects, techStacks, totalCount }) => {
       const[currentPage, setCurrentPage] = useState(1);
       const[perPage, setPerPage] = useState(1);
 
-      const itemsPerPage = 1; 
+      const itemsPerPage = 2; 
 
       // const search = () => {
       //       const newData = userData
@@ -31,12 +32,19 @@ const projects = ({ projects, techStacks, totalCount }) => {
       //       setUserSearchData(newData);
       // }
 
-      const search = async () => {
-            console.log("IN HERE")
-            const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}`)).json();
-            console.log("response is::::",response.searchedProject);
-            setUserSearchData(response.searchedProject);
+      // const search = async (page) => {
+      //       console.log("IN HERE")
+      //       const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`)).json();
+      //       console.log("response is::::",response.searchedProject);
+      //       setUserSearchData(response.searchedProject);
 
+      // }
+      const router = useRouter();
+      const search = () => {
+            router.push({
+                  pathname: './search-project',
+                  query: {title:title, techStack:techStack},
+            });
       }
 
       let dropdown = techStacks.map((techStack) => (
@@ -89,8 +97,10 @@ const projects = ({ projects, techStacks, totalCount }) => {
                   }
                   
             </div> */}
-            
+            <div className={styles.pagination}>
+
             <Pagination onChange={page => pageChange(page)} total={totalPageCount} initialPage={1} siblings={1}  />
+            </div>
             {/* <Pagination
         className="pagination-bar"
         currentPage={currentPage}
@@ -105,7 +115,7 @@ const projects = ({ projects, techStacks, totalCount }) => {
 
 export async function getServerSideProps(){
       const prisma = new PrismaClient();
-      const res = await (await fetch("http://localhost:3000/api/project/")).json();
+      const res = await (await fetch(`http://localhost:3000/api/project/`)).json();
 
       const techStacks = await prisma.TechStack.findMany({
             select:{

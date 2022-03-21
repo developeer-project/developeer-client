@@ -4,8 +4,9 @@ const prisma = new PrismaClient();
 
 export default async function getProject(req, res, next){
       if(req.method === 'GET'){
-            const perPage = 1;
-            const currPage = req.query.currPage || 1;
+            const perPage = Number(req.query.perPage) || 2;
+            const currPage = Number(req.query.currPage) || 1;
+
             const projects = await prisma.Projects.findMany({
                   select:{
                         id: true,
