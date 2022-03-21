@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useMemo } from 'react';
+import React, { useState} from 'react';
 import Card from "../../components/search-page/projects/Card";
 
 import styles from "../../styles/search-page/search.module.scss";
@@ -8,7 +7,6 @@ import styles from "../../styles/search-page/search.module.scss";
 import { PrismaClient } from "@prisma/client";
 
 import { Pagination } from '@mantine/core';
-import { useRouter } from 'next/router';
 
 
 const searchProjects = ({ projects, techStacks, totalCount }) => {
@@ -24,27 +22,20 @@ const searchProjects = ({ projects, techStacks, totalCount }) => {
        
 
       const search = async (page) => {
-            console.log("IN HERE")
             const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`)).json();
-            console.log("response is::::",response.searchedProject);
-            console.log("response is::::",response.totalCount);
             setUserSearchData(response.searchedProject);
             setTotalPageCount(Math.ceil(response.totalCount/itemsPerPage));
 
       }
 
+      const pageChange = async (page) => {
+            const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`)).json();
+            setUserSearchData(response.searchedProject); 
+      }
+
       let dropdown = techStacks.map((techStack) => (
             <option value={techStack.tech_stack}>{techStack.tech_stack}</option>
       ))
-
-      // const totalPageCount = Math.ceil(totalCount/itemsPerPage);
-      const pageChange = async (page) => {
-            console.log("Page   ",page)
-
-            const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`)).json();
-
-            setUserSearchData(response.searchedProject); 
-      }
 
   return (
       <>
@@ -81,15 +72,6 @@ export async function getServerSideProps({query}){
                   tech_stack: true,
             }
       });
-      // const router = useRouter();
-      // console.log("QUERY:: ",router.query)
-      console.log("QUERYR  ",query.title)
-      console.log("QUERYR  ",query.techStack)
-      console.log("RESSS  ",res.searchedProject)
-      console.log("RESSS  ",res.totalCount)
-
-      
-
 
       return{
             props:{

@@ -33,7 +33,6 @@ export default async function getSearchedProject(req, res, next){
                               },
                         },
                   });
-                  // const totalCount = searchedProject.length
                   res.send({
                         searchedProject,
                         totalCount,
@@ -49,7 +48,6 @@ export default async function getSearchedProject(req, res, next){
                         skip: (currPage - 1) * perPage,
                         take:perPage,
                   });
-                  // const totalCount = searchedProject.length;
                   const totalCount = await prisma.Projects.count({
                         where:{
                               title:{
