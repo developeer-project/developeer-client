@@ -6,6 +6,7 @@ import BottomSect from "../components/homepage/BottomSect";
 import Head from "next/head";
 
 import Flip from "react-reveal";
+import QuoteSection from "../components/homepage/QuoteSection";
 const pagetitle = () => "Develo<peer/>";
 
 const HomePage = () => {
@@ -35,7 +36,7 @@ const HomePage = () => {
       <Flip bottom>
         <MidSect />
       </Flip>
-
+      <QuoteSection />
       <BottomSect />
     </>
   );

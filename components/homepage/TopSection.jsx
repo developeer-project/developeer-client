@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 import { useEffect, useState, useRef } from "react";
 // import NET from "vanta/dist/vanta.net.min.js";
 import * as THREE from "three";
@@ -42,7 +40,7 @@ const TopSection = () => {
           <div className={styles.hero_header}>
             <div className={styles.hero_text_wrap}>
               <h1>
-                Ideate.
+                Think.
                 <br />
                 Connect.
                 <br />

@@ -1,15 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { Button } from "@mantine/core";
-import { useRouter } from "next/router";
+import { Button, Text } from "@mantine/core";
 import { Anchor } from "@mantine/core";
 import { useState } from "react";
+import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
 import styles from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
-  const router = useRouter();
   const { data: session, status: authStatus } = useSession();
   const [navbar, setNavbar] = useState(false);
 
@@ -26,19 +25,24 @@ const Navbar = () => {
           <li>
             {authStatus === "authenticated" && (
               <div className={styles.drop_nav}>
-                <Button variant="outline">{session.user.name} </Button>
+                <Button variant="outline">👩🏼‍💻 🧑🏼‍💻</Button>
                 <div className={styles.drop_nav_items}>
-                  <Button variant="subtle" compact>
-                    Settings
+                  <Text weight={500}>
+                    {session.user.name || session.user.email}
+                  </Text>
+                  <Button variant="subtle" onClick={signOut} compact>
+                    Sign Out
                   </Button>
                 </div>
               </div>
             )}
           </li>
         </ul>
-        <Link href="/app-main" passHref>
+        <Link
+          href={authStatus === "authenticated" ? "/app-main" : "/auth/signin"}
+          passHref
+        >
           <Button
-            href="/app"
             passHref
             variant="gradient"
             gradient={{ from: "orange", to: "red" }}
