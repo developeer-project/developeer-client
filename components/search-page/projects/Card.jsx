@@ -1,56 +1,39 @@
 import React from 'react'
 import { useState } from 'react';
-import styles from "../../../styles/search-page/card.module.scss";
+// import styles from "../../../styles/search-page/card.module.scss";
 
 const Card=({ project })=>{
-      
+
   return(
   <>
-    <div className="container">
-          <div className="card">
-                <div className="imgBx">
-                <img src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png" alt="nike-air-shoe"/>
-                {/* <img src="https://cdn.discordapp.com/attachments/951426015404654612/953703986203074580/Valley-Taurus-Mountains-Turkey.jpg" alt="nike-air-shoe"/> */}
-                
-                </div>
-
-                <div className="contentBx">
-
-                <h2>{project.title}</h2>
-                <p>{project.description}</p>
-
-                <div className="size">
-                      <h3>Tech Stack:</h3>
-                    <div className='grid-box1'>
-
-                      {/* <span>Stack1</span>
-                      <span>Stack1</span>
-                      <span>Stack1</span>
-                      <span>Stack1</span>         
-                      <span>Stack1</span>         
-                      <span>Stack1</span>          */}
-
-
-                      {project.tech_stack.map((ts) =>(
-                        <span>{ts}</span>
-
-                      ))}
-                    </div>
-                    
-
-                </div>
-
-                <div className="color">
-
-                      <h3>Domain :</h3>
-                      <span>Blockchain</span>
-                      {/* <span></span>
+          <div className="container">
+              <div className="card">
+                  <div className="imgBx">
+                      <img src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png" alt="nike-air-shoe" />
+                      {/* <img src="https://cdn.discordapp.com/attachments/951426015404654612/953703986203074580/Valley-Taurus-Mountains-Turkey.jpg" alt="nike-air-shoe"/> */}
+                  </div>
+                  <div className="contentBx">
+                      <h2>{project.title}</h2>
+                      <p>{project.description}</p>
+                      <div className="size">
+                          <h3>Tech Stack</h3>
+                          <div className="break">   </div>
+                          <div className='grid-box1'>
+                              {project.tech_stack.map((ts) => (
+                                  <span>{ts}</span>
+                              ))}
+                          </div>
+                      </div>
+                      <div className="color">
+                          <h3>Domain</h3>
+                          <div className="break"></div>
+                          <span>Blockchain</span>
+                          {/* <span></span>
                       <span></span> */}
-                </div>
-                </div>
-
+                      </div>
+                  </div>
+              </div>
           </div>
-    </div>
 
 
 <style jsx>
@@ -152,25 +135,32 @@ const Card=({ project })=>{
           font-weight: 600;
           letter-spacing: 1px;
           color: #fff;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
       }
       .container .card .contentBx p{
           position: relative;
           font-weight: 400;
           letter-spacing: 1px;
           color: #fff;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
       }
-      
+
       .container .card .contentBx .size,
       .container .card .contentBx .color {
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-flow : row wrap ;
           padding: 2px 5px;
           transition: .5s;
           opacity: 0;
           visibility: hidden;
       }
-      
+
       .container .card:hover .contentBx .size {
           opacity: 1;
           visibility: visible;
@@ -195,28 +185,24 @@ const Card=({ project })=>{
       }
 
       .container .card .contentBx .size span {
-          width: 50%;
           height: 26px;
+          font-weight: 500;
           text-align: center;
-          line-height: 16px;
-          font-size: 14px;
+          line-height: 12px;
+          font-size: 12px;
           display: inline-block;
-          color: red;
-          margin: 0 5px;
           transition: .5s;
-          color: red;
           border-radius: 4px;
           cursor: pointer;
-      }
+          color: wheat
+        }
       
       
       .container .card .contentBx .color span {
-          width: 20px;
           height: 20px;
           border-radius: 50%;
-          margin: 0 5px;
           cursor: pointer;
-          color: red;
+          color: wheat;
       }
       
 
@@ -228,6 +214,13 @@ const Card=({ project })=>{
         align-items: center;
         justify-content: center;
       }
+
+      .break {
+        flex-basis: 100%;
+        width: 100%;
+        height: 0;
+      }
+
       `
     }
 </style>
