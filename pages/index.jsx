@@ -1,19 +1,20 @@
-import styles from "../styles/Homepage.module.scss";
-import TestPage from "../components/test";
-import { useSession, signIn, signOut } from "next-auth/react";
+// import styles from "../styles/Homepage.module.scss";
+import { useSession, signOut } from "next-auth/react";
 import { Button } from "@mantine/core";
+import { useRouter } from "next/router";
+
+import SignIn from "./auth/signin";
+import TestPage from "../components/test";
+import HomePage from "./home";
 
 export default function IndexPage() {
-  const { data: session, status } = useSession();
-  if (status === "authenticated") {
-    return (
-      <>
-        <p>Signed in as {session.user.email}</p>
-        <TestPage/>
-        <Button onClick={signOut} > Sign out</Button>
-      </>
-    );
-  }
-
-  return <Button onClick={signIn}>Sign in</Button>;
+  const router = useRouter();
+  // redirect to app page if user is logged in
+  // const { data: session, status: authStatus } = useSession();
+  // if (authStatus === "authenticated") {
+  return <HomePage />;
+  // } else {
+  // return <SignIn />;
+  // }
+  // return null;
 }
