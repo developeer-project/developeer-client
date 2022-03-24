@@ -21,13 +21,13 @@ const Navbar = () => {
         />
       </div>
       <div className={styles.nav_menu_wrap}>
-        <ul>
+        <ul  >
           <li>
             {authStatus === "authenticated" && (
               <div className={styles.drop_nav}>
                 <Button variant="outline">👩🏼‍💻 🧑🏼‍💻</Button>
                 <div className={styles.drop_nav_items}>
-                  <Text weight={500}>
+                  <Text color="orange"  size = "sm" style={{padding: '5px'}}  >
                     {session.user.name || session.user.email}
                   </Text>
                   <Button variant="subtle" onClick={signOut} compact>
