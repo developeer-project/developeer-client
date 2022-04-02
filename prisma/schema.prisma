@@ -67,7 +67,7 @@ model UserProfile{
   has_registered Boolean @default(false)
   // skills_id Int[]
   user User @relation(fields: [user_id], references: [id])
-  skills_id Int[]
+  skills String[]
   links Links?
   projects Projects[]
 }

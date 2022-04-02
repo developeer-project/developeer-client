@@ -4,11 +4,13 @@ const prisma = new PrismaClient();
 
 export default async function getUser(req, res, next){
       if(req.method === 'GET'){
-            const user = await prisma.UserProfile.findMany({
+            const users = await prisma.UserProfile.findMany({
                   where:{
                         has_registered: true,
                   },
             });
-            res.send({'message':user})
+
+            const count = users.length;
+            res.send({users, count})
       }
 }

@@ -1,20 +1,20 @@
 import React from 'react'
 
-function UserProfileCard() {
+function UserProfileCard({users}) {
     return (
       <div classNameName="card_wrap">
         <div className="card-container">
-        <span className="pro">PRO</span>
+        {/* <span className="pro">PRO</span> */}
         <img
              className="round"
-             src="https://randomuser.me/api/portraits/women/79.jpg"
+             src="https://randomuser.me/api/portraits/men/79.jpg"
              alt="user"
       />
-        <h3>Lexi Armstrong</h3>
-        <h6>New York</h6>
+        <h3> {users.name} </h3>
+        <h6>{users.location}</h6>
+        <h6>College: {users.college_name}</h6>
         <p>
-          User interface designer and <br />
-          front-end developer
+          {users.bio}
         </p>
         <div className="buttons">
           <button className="primary">
@@ -27,14 +27,9 @@ function UserProfileCard() {
         <div className="skills">
           <h6>Skills</h6>
           <ul>
-            <li>UI / UX</li>
-            <li>Frontend Development</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>React</li>
-            <li>Node</li>
+            {users.skills.map((skill) => ( 
+              <li>{skill}</li>
+            ))}
            </ul>
         </div>
         </div>
@@ -50,7 +45,6 @@ function UserProfileCard() {
           width: 320px;
           margin: 0;
         }
-
         h3 {
           margin: 10px 0;
         }
