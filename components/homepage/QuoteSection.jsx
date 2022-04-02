@@ -1,11 +1,16 @@
 import styles from "../../styles/homepage-comps/quote.module.css";
+import { Blockquote } from '@mantine/core';
 
 const QuoteSection = () => {
-  return (
-    <section className={styles.quote_sect}>
-      <p>Aryaman's Quote section</p>
-    </section>
-  );
+    return (
+      <Blockquote cite="– Random Guy">
+        A stitch in time saves nine.
+      </Blockquote>
+    );
 };
 
 export default QuoteSection;
+
+
+
+
