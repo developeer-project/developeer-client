@@ -4,23 +4,37 @@ import UserProfileCard from "../../components/search-page/profiles/UserProfileCa
 import { PrismaClient } from "@prisma/client";
 import styles from "../../styles/search-page/search.module.scss";
 import { Pagination } from '@mantine/core';
+import { useRouter } from 'next/router';
+const profiles = ({ users, skills, totalCount }) => {
 
-const profiles = ({ users, skills }) => {
-
-  const [title, setTitle] = useState("");
-  const [userData, setUserData] = useState(users);
-  const [userSearchData, setUserSearchData] = useState(users);
-  const [techStack, setTechStack] = useState("");
-
+      const itemsPerPage = 2; 
+      const router = useRouter();
+      const totalPageCount = Math.ceil(totalCount/itemsPerPage);
 
 
-  let dropdown_skills = skills.map((skill) => (
-    <option value={skill.skill}> {skill.skill} </option>
-  )) 
+      const [title, setTitle] = useState("");
+      const [userData, setUserData] = useState(users);
+      const [userSearchData, setUserSearchData] = useState(users);
+      const [skill, setSkill] = useState("");
+
+      const search = () => {
+            router.push({
+                  pathname: './search-profile',
+                  query: {title:title, skill:skill},
+            });
+      }
+      const pageChange = async (page) => {
+            const response = await (await fetch(`http://localhost:3000/api/profiles/?currPage=${page}`)).json();
+            setUserSearchData(response.projects); 
+      }
+
+      let dropdown_skills = skills.map((skill) => (
+      <option value={skill.skill}> {skill.skill} </option>
+      )) 
   return (
     <>
         <div className={styles.searchBar}>
-        <select onChange={(e) => setTechStack(e.target.value)}>
+        <select onChange={(e) => setSkill(e.target.value)}>
               <option value="">
               </option>
               {dropdown_skills}
@@ -35,9 +49,9 @@ const profiles = ({ users, skills }) => {
                     ))}
         </div>
 
-        {/* <div className={styles.pagination}>
+        <div className={styles.pagination}>
           <Pagination onChange={page => pageChange(page)} total={totalPageCount} initialPage={1} siblings={1}  />
-        </div> */}
+        </div>
     </>
   )
 }
@@ -46,18 +60,16 @@ const profiles = ({ users, skills }) => {
 export async function getServerSideProps(){
   const prisma = new PrismaClient();
   const res = await (await fetch(`http://localhost:3000/api/user/`)).json();
-  console.log("RES   ",res.users[0]['skills'])
   const skills = await prisma.Skills.findMany({
         select:{
               skill: true,
         }
   });
-  console.log(skills)
   return{
         props:{
               users:res.users,
               skills,
-              // totalCount: res.totalCount,
+              totalCount: res.totalCount,
         },
   };
 }
