@@ -1,3 +1,5 @@
+## Readme will soon be added
+
 # Developeer Client
 
 This repo has client app built on top of react/next.

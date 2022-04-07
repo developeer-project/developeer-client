@@ -1,0 +1,15 @@
+.box2{
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      align-items: center;
+      justify-content: center;
+      padding: 1%;
+      // border: 2px solid red;
+}
+
+.searchBar{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+}

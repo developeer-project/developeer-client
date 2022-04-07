@@ -1,0 +1,35 @@
+.wrap{
+    background-color: #F0F8FF;
+    overflow: hidden;
+}
+
+.styles_wrap {
+    // background: #f00;
+    border: 1px dotted pink;
+    width: 96%;
+    margin: 1rem auto;
+    // height: 93vh; // TODO: make this dynamic
+    overflow: hidden;
+}
+
+.card_wrap {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.header {
+    // border: 1px solid slateblue;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: clamp(1.2rem, 2.9vw - 0.1rem, 1.75rem);
+
+    .heading {
+        margin-bottom: 1rem;
+        font-size: clamp(1.4rem, 5.9vw - 1.2rem, 2.5rem) !important;
+    }
+
+
+}

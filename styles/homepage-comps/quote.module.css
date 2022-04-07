@@ -1,0 +1,8 @@
+.quote_sect {
+    border: 1px dotted green;
+    height: 75vh;
+}
+.small{
+    height: 200px;
+    width: 200px;
+}

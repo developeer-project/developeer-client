@@ -1,0 +1,114 @@
+.page_body {
+      height: 93vh;
+      position: relative;
+}
+
+.hero_box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% - max(28%, 320pt));
+      height: 100%;
+      z-index: -1;
+}
+
+.form_wrap {
+      // border: 1px solid green;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      width: 28%;
+      min-width: 320pt;
+      background-color: rgb(246, 251, 255);
+
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+
+      .input_wrap {
+            // border: 1px solid salmon;
+            margin: 15% auto;
+            padding: 28px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            height: 280px;
+            gap: 2rem;
+
+      }
+
+}
+
+@media screen and (max-width: 820px) {
+      .page_body {
+            display: flex;
+            justify-content: center;
+      }
+
+      .form_wrap {
+            position: initial;
+            right: initial;
+      }
+
+      .hero_box {
+            display: none;
+      }
+
+}
+
+.email_form_wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 50%;
+      gap: 8px;
+}
+
+.email_ {
+      width: 100%;
+}
+
+// .pageBody{
+//       width: 90vw;
+//       height: 80vh;
+//       display: flex;
+// }
+
+// .signinWrap{
+//       width: 25vw !important;
+//       height: 25vw !important;
+//       padding: 7vw !important;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       margin-top: 7em;
+//       border: 1px solid grey;
+//       border-radius: 10px;
+// }
+
+// .emptyDiv{
+//       width: 50%;
+//       // border: 1px solid red;
+//       align-items: center;
+// }
+
+// .submitButton {
+//       width: 20vw;
+//       outline: none;
+//       border: none;
+//       border-radius: 5px;
+//       padding: 10px;
+//       margin-top: 5px;
+//       align-items: center;
+//       cursor: pointer;
+// }
+
+// .input{
+//       width: 20vw;    
+// }
+
+// .buttonProvider{
+//       width: 20vw;   
+// }
