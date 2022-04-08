@@ -1,16 +1,25 @@
 import React from "react";
 import Link from "next/link";
 import { Button, Text } from "@mantine/core";
-import { Anchor } from "@mantine/core";
-import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/dist/client/router";
 
 import styles from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
   const { data: session, status: authStatus } = useSession();
-  const [navbar, setNavbar] = useState(false);
+  const {asPath}  = useRouter();
+
+  const isApp = asPath.slice(0,4) === "/app";
+  const isHome = asPath === "/";
+
+  const getStartedPath = () => {
+    console.log(isApp, isHome)
+    if (isHome  && authStatus === "unauthenticated") return "/auth/signin";
+    if (isApp && authStatus === "authenticated") return "/app/profile";
+    return "/app"
+  }
 
   return (
     <div className={styles.nav_wrap}>
@@ -21,11 +30,11 @@ const Navbar = () => {
         />
       </div>
       <div className={styles.nav_menu_wrap}>
-        <ul  >
+        <ul >
           <li>
             {authStatus === "authenticated" && (
               <div className={styles.drop_nav}>
-                <Button variant="outline">👩🏼‍💻 🧑🏼‍💻</Button>
+                <Button variant="outline">👩🏼‍💻 </Button>
                 <div className={styles.drop_nav_items}>
                   <Text color="orange"  size = "sm" style={{padding: '5px'}}  >
                     {session.user.name || session.user.email}
@@ -39,7 +48,7 @@ const Navbar = () => {
           </li>
         </ul>
         <Link
-          href={authStatus === "authenticated" ? "/app-main" : "/auth/signin"}
+          href={getStartedPath()}
           passHref
         >
           <Button
@@ -47,7 +56,9 @@ const Navbar = () => {
             variant="gradient"
             gradient={{ from: "orange", to: "red" }}
           >
-            Get started
+            {
+              (isHome && authStatus == "authenticated") ? "Get Started" : "My Profile"
+            }
           </Button>
         </Link>
       </div>

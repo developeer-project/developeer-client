@@ -1,20 +1,28 @@
-// import styles from "../styles/Homepage.module.scss";
-import { useSession, signOut } from "next-auth/react";
-import { Button } from "@mantine/core";
-import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import Head from "next/head";
+import Flip from "react-reveal";
 
-import SignIn from "./auth/signin";
-import TestPage from "../components/test";
-import HomePage from "./home";
+import MidSect from "../components/homepage/MidSect";
+import TopSection from "../components/homepage/TopSection";
+import BottomSect from "../components/homepage/BottomSect";
+import QuoteSection from "../components/homepage/QuoteSection";
 
-export default function IndexPage() {
-  const router = useRouter();
-  // redirect to app page if user is logged in
-  // const { data: session, status: authStatus } = useSession();
-  // if (authStatus === "authenticated") {
-  return <HomePage />;
-  // } else {
-  // return <SignIn />;
-  // }
-  // return null;
-}
+const pageTitle = () => "Develo<peer/>";
+
+const HomePage = () => {
+  return (
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
+      <TopSection />
+      <Flip bottom>
+        <MidSect />
+      </Flip>
+      <QuoteSection />
+      <BottomSect />
+    </>
+  );
+};
+
+export default HomePage;

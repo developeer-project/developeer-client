@@ -10,7 +10,7 @@ import { Pagination } from '@mantine/core';
 
 
 const searchProjects = ({ projects, techStacks, totalCount }) => {
-      
+
       const itemsPerPage = 2;
 
       const [title, setTitle] = useState("");
@@ -19,7 +19,6 @@ const searchProjects = ({ projects, techStacks, totalCount }) => {
       const [techStack, setTechStack] = useState("");
       const [totalPageCount, setTotalPageCount] = useState(Math.ceil(totalCount/itemsPerPage));
 
-       
 
       const search = async (page) => {
             const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`)).json();
@@ -30,7 +29,7 @@ const searchProjects = ({ projects, techStacks, totalCount }) => {
 
       const pageChange = async (page) => {
             const response = await (await fetch(`http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`)).json();
-            setUserSearchData(response.searchedProject); 
+            setUserSearchData(response.searchedProject);
       }
 
       let dropdown = techStacks.map((techStack) => (
@@ -46,7 +45,6 @@ const searchProjects = ({ projects, techStacks, totalCount }) => {
                         {dropdown}
                   </select>
                   <input placeholder='Query' onChange={(e) => setTitle(e.target.value)}/>
-                  
                   <button type="submit" onClick={() => search()}>Search</button>
             </div>
             <div className={styles.box2} >

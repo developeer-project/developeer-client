@@ -8,21 +8,21 @@ datasource db {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
-  oauth_token_secret String?
-  oauth_token        String?
-  refresh_token_expires_in        Int?
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String?
+  access_token             String?
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String?
+  session_state            String?
+  oauth_token_secret       String?
+  oauth_token              String?
+  refresh_token_expires_in Int?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -38,9 +38,9 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String       @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?      @unique
   emailVerified DateTime?
   image         String?
   user_profile  UserProfile?
@@ -56,52 +56,52 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model UserProfile{
-  id Int @id @default(autoincrement())
-  name String
-  college_name String
-  bio String?
-  location String
-  interests String[]
-  user_id String
-  has_registered Boolean @default(false)
+model UserProfile {
+  id             Int        @id @default(autoincrement())
+  name           String
+  college_name   String
+  bio            String?
+  location       String
+  interests      String[]
+  user_id        String     @unique
+  has_registered Boolean    @default(false)
   // skills_id Int[]
-  user User @relation(fields: [user_id], references: [id])
-  skills_id Int[]
-  links Links?
-  projects Projects[]
+  user           User       @relation(fields: [user_id], references: [id])
+  skills_id      Int[]
+  links          Links?
+  projects       Projects[]
 }
 
-model Skills{
-  id Int @id @default(autoincrement())
+model Skills {
+  id    Int    @id @default(autoincrement())
   skill String
 }
 
-model Links{
-  id Int @id @default(autoincrement())
+model Links {
+  id             Int         @id @default(autoincrement())
   portfolio_link String?
-  linkedin String?
-  github String?
-  instagram String?
-  twitter String?
-  facebook String?
-  other_links String[]
-  user_id Int
-  user_profile UserProfile @relation(fields: [user_id], references: [id])
+  linkedin       String?
+  github         String?
+  instagram      String?
+  twitter        String?
+  facebook       String?
+  other_links    String[]
+  user_id        Int         @unique
+  user_profile   UserProfile @relation(fields: [user_id], references: [id])
 }
 
-model Projects{
-  id Int @id @default(autoincrement())
-  title String
-  repo_link String
-  tech_stack String[]
-  description String
-  link String?
+model Projects {
+  id              Int         @id @default(autoincrement())
+  title           String
+  repo_link       String
+  tech_stack      String[]
+  description     String
+  link            String?
   user_profile_id Int
-  user_profile UserProfile @relation(fields: [user_profile_id], references: [id])
+  user_profile    UserProfile @relation(fields: [user_profile_id], references: [id])
 }
 
-model TechStack{
-  id Int @id @default(autoincrement())
+model TechStack {
+  id         Int    @id @default(autoincrement())
   tech_stack String
 }
