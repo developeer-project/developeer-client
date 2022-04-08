@@ -5,13 +5,27 @@ import { Stepper } from "@mantine/core";
 
 import ProfileFormPart1 from "../../components/profile/profileForm1";
 import ProfileFormPart2 from "../../components/profile/profileForm2";
+import axios from "axios";
 
 function ActivateProfileForm() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
+  const [formData, setFormData] = useState({});
+
+  const saveData = (data) => {
+    setFormData({ ...formData, ...data });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await axios.post("/api/test", formData);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>
@@ -21,28 +35,38 @@ function ActivateProfileForm() {
             label="Fist step"
             description="Create an account"
             allowStepSelect={active > 0}>
-            <ProfileFormPart1 />
+            <ProfileFormPart1
+              saveFormData={saveData}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
           </Stepper.Step>
           <Stepper.Step
             label="Second step"
             description="Verify email"
             allowStepSelect={active > 1}>
-            <ProfileFormPart2 />
+            <ProfileFormPart2
+              saveFormData={saveData}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
           </Stepper.Step>
           <Stepper.Step
             label="Final step"
             description="Get full access"
             allowStepSelect={active > 2}>
             Step 3 content: Get full access
+            <button onClick={handleSubmit}>Submit form</button>
           </Stepper.Step>
           <Stepper.Completed>
             Completed, click back button to get to previous step
           </Stepper.Completed>
         </Stepper>
-
-        <Group position="apart" mt="lg">
+        {/* <Group position="apart" mt="lg">
           <Group spacing="sm">
-            <Button variant="outline">Prev</Button>
+            <Button variant="outline" onClick={prevStep}>
+              Prev
+            </Button>
             <ActionIcon
               color="red"
               variant="hover"
@@ -51,7 +75,7 @@ function ActivateProfileForm() {
             </ActionIcon>
           </Group>
           <Button onClick={nextStep}>Next step</Button>
-        </Group>
+        </Group> */}
       </Box>
     </>
   );

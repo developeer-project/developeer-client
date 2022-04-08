@@ -9,17 +9,16 @@ import styles from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
   const { data: session, status: authStatus } = useSession();
-  const {asPath}  = useRouter();
+  const { asPath } = useRouter();
 
-  const isApp = asPath.slice(0,4) === "/app";
+  const isApp = asPath.slice(0, 4) === "/app";
   const isHome = asPath === "/";
 
   const getStartedPath = () => {
-    console.log(isApp, isHome)
-    if (isHome  && authStatus === "unauthenticated") return "/auth/signin";
+    if (isHome && authStatus === "unauthenticated") return "/auth/signin";
     if (isApp && authStatus === "authenticated") return "/app/profile";
-    return "/app"
-  }
+    return "/app";
+  };
 
   return (
     <div className={styles.nav_wrap}>
@@ -30,13 +29,13 @@ const Navbar = () => {
         />
       </div>
       <div className={styles.nav_menu_wrap}>
-        <ul >
+        <ul>
           <li>
             {authStatus === "authenticated" && (
               <div className={styles.drop_nav}>
                 <Button variant="outline">👩🏼‍💻 </Button>
                 <div className={styles.drop_nav_items}>
-                  <Text color="orange"  size = "sm" style={{padding: '5px'}}  >
+                  <Text color="orange" size="sm" style={{ padding: "5px" }}>
                     {session.user.name || session.user.email}
                   </Text>
                   <Button variant="subtle" onClick={signOut} compact>
@@ -47,18 +46,14 @@ const Navbar = () => {
             )}
           </li>
         </ul>
-        <Link
-          href={getStartedPath()}
-          passHref
-        >
+        <Link href={getStartedPath()} passHref>
           <Button
             passHref
             variant="gradient"
-            gradient={{ from: "orange", to: "red" }}
-          >
-            {
-              (isHome && authStatus == "authenticated") ? "Get Started" : "My Profile"
-            }
+            gradient={{ from: "orange", to: "red" }}>
+            {isHome && authStatus == "authenticated"
+              ? "Get Started"
+              : "My Profile"}
           </Button>
         </Link>
       </div>

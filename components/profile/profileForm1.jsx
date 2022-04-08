@@ -1,9 +1,10 @@
 import { useForm } from "@mantine/hooks";
-import { TextInput, Box } from "@mantine/core";
-
+import { TextInput, Box, Group, Button, ActionIcon } from "@mantine/core";
+import { Rotate } from "tabler-icons-react";
 import InterestSelection from "./interesetSelector";
 
-const ProfileFormPart1 = () => {
+const ProfileFormPart1 = (props) => {
+  const { nextStep, prevStep, saveFormData, fullFormData } = props;
   const form = useForm({
     initialValues: {
       name: "",
@@ -17,9 +18,15 @@ const ProfileFormPart1 = () => {
     },
   });
 
+  const handleFormSave = (e) => {
+    e.preventDefault();
+    saveFormData(form.values);
+    nextStep();
+  };
+
   return (
     <Box sx={{ maxWidth: 400 }} mx="auto">
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={handleFormSave}>
         <TextInput
           label="Name"
           placeholder="Your public name"
@@ -34,18 +41,22 @@ const ProfileFormPart1 = () => {
           {...form.getInputProps("location")}
         />
         <InterestSelection {...form.getInputProps("interests")} />
-        {/* <Group position="apart" mt="md">
-            <Group spacing="sm">
-              <Button variant="outline">Prev</Button>
-              <ActionIcon
-                color="red"
-                variant="hover"
-                onClick={() => form.removeListItem("interests", index)}>
-                <Rotate size={16} />
-              </ActionIcon>
-            </Group>
-            <Button type="submit">Submit</Button>
-          </Group> */}
+        <Group position="apart" mt="lg">
+          <Group spacing="sm">
+            <Button variant="outline" onClick={prevStep}>
+              Prev
+            </Button>
+            <ActionIcon
+              color="red"
+              variant="hover"
+              onClick={() => alert("resetting")}>
+              <Rotate size={16} />
+            </ActionIcon>
+          </Group>
+          <Button type="submit" onClick={handleFormSave}>
+            Next step
+          </Button>
+        </Group>
       </form>
     </Box>
   );

@@ -2,8 +2,10 @@ import { TextInput, Group, ActionIcon, Box } from "@mantine/core";
 import { Trash } from "tabler-icons-react";
 import { Textarea, Text, Button } from "@mantine/core";
 import { useForm, yupResolver, formList } from "@mantine/form";
+import { Rotate } from "tabler-icons-react";
 
-const ProfileFormPart2 = () => {
+const ProfileFormPart2 = (props) => {
+  const { nextStep, prevStep, saveFormData, fullFormData } = props;
   //   const schema = Yup.object().shape({
   //     name: Yup.string().min(2, "Name should have at least 2 letters"),
   //     email: Yup.string().email("Invalid email"),
@@ -17,6 +19,13 @@ const ProfileFormPart2 = () => {
       socialLinks: formList([{ site: "", url: "" }]),
     },
   });
+
+  const handleFormSave = (e) => {
+    e.preventDefault();
+    saveFormData(form.values);
+    nextStep();
+  };
+
   const fields = form.values.socialLinks.map((_, index) => (
     <Group key={index} mb="xs">
       <TextInput
@@ -42,7 +51,7 @@ const ProfileFormPart2 = () => {
 
   return (
     <Box sx={{ maxWidth: 400 }} mx="auto">
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={handleFormSave}>
         <TextInput
           label="College"
           placeholder="College name (optional)"
@@ -76,18 +85,20 @@ const ProfileFormPart2 = () => {
             </Button>
           </Group>
         </Box>
-        {/* <Group position="apart" mt="md">
-            <Group spacing="sm">
-              <Button variant="outline">Prev</Button>
-              <ActionIcon
-                color="red"
-                variant="hover"
-                onClick={() => form.removeListItem("socialLinks", index)}>
-                <Rotate size={16} />
-              </ActionIcon>
-            </Group>
-            <Button type="submit">Submit</Button>
-          </Group> */}
+        <Group position="apart" mt="lg">
+          <Group spacing="sm">
+            <Button variant="outline" onClick={prevStep}>
+              Prev
+            </Button>
+            <ActionIcon
+              color="red"
+              variant="hover"
+              onClick={() => alert("resetting")}>
+              <Rotate size={16} />
+            </ActionIcon>
+          </Group>
+          <Button onClick={handleFormSave}>Next step</Button>
+        </Group>
       </form>
     </Box>
   );
