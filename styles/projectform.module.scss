@@ -1,0 +1,24 @@
+.root_container {
+  border: 1px solid #ccc;
+  width: 100%;
+  min-height: 100px;
+
+  div {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 12px;
+
+    .new_project__btn {
+      border: 0.6px dotted grey;
+      flex-basis: 6rem;
+      height: 6rem;
+    }
+  }
+}
+
+.div_top {
+  border: 0.4px solid rgb(215, 248, 215);
+  width: 150px;
+  height: 150px;
+}

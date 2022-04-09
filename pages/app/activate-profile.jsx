@@ -6,9 +6,10 @@ import { Stepper } from "@mantine/core";
 import ProfileFormPart1 from "../../components/profile/profileForm1";
 import ProfileFormPart2 from "../../components/profile/profileForm2";
 import axios from "axios";
+import ProjectForm from "../../components/profile/projectForm";
 
 function ActivateProfileForm() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(2);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () =>
@@ -16,6 +17,7 @@ function ActivateProfileForm() {
   const [formData, setFormData] = useState({});
 
   const saveData = (data) => {
+    console.log("save global form ", data);
     setFormData({ ...formData, ...data });
   };
 
@@ -29,7 +31,7 @@ function ActivateProfileForm() {
 
   return (
     <>
-      <Box mx="auto" style={{ width: "45%", minWidth: "400px" }}>
+      <Box mx="auto" style={{ width: "55%", minWidth: "400px" }}>
         <Stepper active={active} onStepClick={setActive} breakpoint="sm">
           <Stepper.Step
             label="Fist step"
@@ -55,10 +57,14 @@ function ActivateProfileForm() {
             label="Final step"
             description="Get full access"
             allowStepSelect={active > 2}>
-            Step 3 content: Get full access
-            <button onClick={handleSubmit}>Submit form</button>
+            <ProjectForm
+              saveFormData={saveData}
+              nextStep={nextStep}
+              prevStep={prevStep}
+            />
           </Stepper.Step>
           <Stepper.Completed>
+            <button onClick={handleSubmit}>Submit form</button>
             Completed, click back button to get to previous step
           </Stepper.Completed>
         </Stepper>

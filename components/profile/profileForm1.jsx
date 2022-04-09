@@ -41,6 +41,9 @@ const ProfileFormPart1 = (props) => {
           {...form.getInputProps("location")}
         />
         <InterestSelection {...form.getInputProps("interests")} />
+
+        {/* // TODO this bottom button group is repeated in both form parts */}
+        {/* // TODO make a reusable component for this if gets used again */}
         <Group position="apart" mt="lg">
           <Group spacing="sm">
             <Button variant="outline" onClick={prevStep}>

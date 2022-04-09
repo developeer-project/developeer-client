@@ -41,8 +41,7 @@ const ProviderOpts = ({ providers }) => {
         onClick={() => signIn(provider.id)}
         key={provider.id}
         size="lg"
-        fullWidth
-      >
+        fullWidth>
         Sign in with {provider.name}
       </Button>
     );
@@ -66,8 +65,7 @@ const EmailForm = ({ csrfToken }) => {
       <form
         method="post"
         action="/api/auth/signin/email"
-        className={styles.email_form_wrap}
-      >
+        className={styles.email_form_wrap}>
         <input
           className={styles.input}
           name="csrfToken"
@@ -90,8 +88,7 @@ const EmailForm = ({ csrfToken }) => {
           disabled={!valid}
           fullWidth
           type="submit"
-          variant="light"
-        >
+          variant="light">
           Sign in with Email
         </Button>
       </form>
