@@ -14,7 +14,7 @@ import {
   Card,
 } from "@mantine/core";
 import { useForm } from "@mantine/hooks";
-import { PlaylistAdd, LivePhoto } from "tabler-icons-react";
+import { PlaylistAdd, LivePhoto, Rotate } from "tabler-icons-react";
 // import { Dropzone } from "@mantine/dropzone";
 
 // import ProjectCard from "../search-page/projects/Card";
@@ -46,9 +46,9 @@ const ProjectForm = (props) => {
         size="lg"
         transition="scale"
         opened={modalActive}
-        onClose={() => setModalActive(false)}
+        withCloseButton={false}
         title="Add a new project">
-        <ModalContent submitFn={handleSubmit} />
+        <ModalContent modalControl={setModalActive} submitFn={handleSubmit} />
       </Modal>
       <div className={styles.root_container}>
         <Text mx="auto" align="center" weight={500}>
@@ -61,9 +61,22 @@ const ProjectForm = (props) => {
           ))}
           <NewProjectButton cb={newTrigger} />
         </Group>
-        <div>
-          <Button onClick={nextStep}> next </Button>
-        </div>
+        <Group position="apart" mt="lg">
+          <Group spacing="sm">
+            <Button variant="outline" onClick={prevStep}>
+              Prev
+            </Button>
+            <ActionIcon
+              color="red"
+              variant="hover"
+              onClick={() => alert("resetting")}>
+              <Rotate size={16} />
+            </ActionIcon>
+          </Group>
+          <Button type="submit" onClick={(e) => projects.length && nextStep()}>
+            Next step
+          </Button>
+        </Group>
       </div>
     </>
   );
@@ -71,7 +84,7 @@ const ProjectForm = (props) => {
 
 export default ProjectForm;
 
-function ModalContent({ submitFn }) {
+function ModalContent({ submitFn, modalControl }) {
   const fileInputRef = useRef();
   const [data, setData] = useState(["React", "Angular", "Svelte", "Vue"]);
   const handleChange = () => {
@@ -94,6 +107,7 @@ function ModalContent({ submitFn }) {
   const handleSave = (e) => {
     e.preventDefault();
     submitFn(form.values);
+    modalControl(false);
   };
 
   return (

@@ -19,13 +19,14 @@ export default function ProjectInfoCard({ project }) {
     theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
 
   return (
-    <div style={{ width: 300 }}>
-      <Card shadow="sm" p="sm">
-        <Card.Section mx="auto">
+    <div style={{ width: 280 }}>
+      <Card radius="md" shadow="sm" p="sm">
+        <Card.Section mx="auto" sx={{ width: "100%" }}>
           <Image
             src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png"
-            height={160}
+            height={140}
             alt="Norway"
+            mx="auto"
           />
         </Card.Section>
 
@@ -36,12 +37,20 @@ export default function ProjectInfoCard({ project }) {
             width: "100%",
             marginTop: theme.spacing.sm,
           }}>
-          <Text weight={500}>{project.title}</Text>
+          <Text weight={600}>{project.title}</Text>
           <Group direction="row" position="right">
-            <ActionIcon color="teal" variant="hover">
+            <ActionIcon
+              component="a"
+              href={project.link}
+              color="teal"
+              variant="hover">
               <Link />
             </ActionIcon>
-            <ActionIcon color="teal" variant="hover">
+            <ActionIcon
+              component="a"
+              href={project.repo}
+              color="teal"
+              variant="hover">
               <BrandGithub />
             </ActionIcon>
           </Group>
@@ -57,15 +66,13 @@ export default function ProjectInfoCard({ project }) {
             {project.description}
           </Text>
         </Box>
-        <Box>
-          <Group direction="row" justify="space-between" align="center">
-            {project.techStack.map((tech) => (
-              <Badge variant="light" color="pink">
-                {tech}
-              </Badge>
-            ))}
-          </Group>
-        </Box>
+        <Group direction="row" justify="space-between" align="center">
+          {project.techStack.map((tech) => (
+            <Badge variant="light" color="orange">
+              {tech}
+            </Badge>
+          ))}
+        </Group>
       </Card>
     </div>
   );
