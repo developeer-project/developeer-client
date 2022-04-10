@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Button, Box, Group, ActionIcon } from "@mantine/core";
 import { Rotate } from "tabler-icons-react";
 import { Stepper } from "@mantine/core";
+import axios from "axios";
 
 import ProfileFormPart1 from "../../components/profile/profileForm1";
 import ProfileFormPart2 from "../../components/profile/profileForm2";
-import axios from "axios";
 import ProjectForm from "../../components/profile/projectForm";
 
 function ActivateProfileForm() {
@@ -64,7 +64,7 @@ function ActivateProfileForm() {
             />
           </Stepper.Step>
           <Stepper.Completed>
-            <button onClick={handleSubmit}>Submit form</button>
+            <Button onClick={handleSubmit}>Submit form</Button>
             Completed, click back button to get to previous step
           </Stepper.Completed>
         </Stepper>

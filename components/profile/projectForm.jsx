@@ -9,15 +9,16 @@ import {
   Modal,
   TextInput,
   Box,
-  Checkbox,
   Textarea,
   MultiSelect,
-  Paper,
+  Card,
 } from "@mantine/core";
 import { useForm } from "@mantine/hooks";
 import { PlaylistAdd, LivePhoto } from "tabler-icons-react";
 // import { Dropzone } from "@mantine/dropzone";
 
+// import ProjectCard from "../search-page/projects/Card";
+import ProjectInfoCard from "./ProjectInfoCard";
 import styles from "../../styles/projectform.module.scss";
 
 const ProjectForm = (props) => {
@@ -42,7 +43,7 @@ const ProjectForm = (props) => {
     <>
       <Modal
         centered
-        size="md"
+        size="lg"
         transition="scale"
         opened={modalActive}
         onClose={() => setModalActive(false)}
@@ -54,9 +55,12 @@ const ProjectForm = (props) => {
           Add projects
         </Text>
 
-        <div>
+        <Group direction="row" spacing="md">
+          {projects.map((project, index) => (
+            <ProjectInfoCard project={project} key={index} />
+          ))}
           <NewProjectButton cb={newTrigger} />
-        </div>
+        </Group>
         <div>
           <Button onClick={nextStep}> next </Button>
         </div>
@@ -75,13 +79,11 @@ function ModalContent({ submitFn }) {
   };
   const form = useForm({
     initialValues: {
-      email: "",
       title: "",
       link: "",
       repo: "",
       description: "",
       techStack: [],
-      inProfile: false,
     },
 
     validate: {
@@ -117,6 +119,7 @@ function ModalContent({ submitFn }) {
               className={styles.div_top}
               style={{ flexGrow: 1, border: "none", height: "70%" }}>
               <MultiSelect
+                style={{ height: "80px" }}
                 label="Tech stack"
                 {...form.getInputProps("techStack")}
                 data={data}
@@ -157,11 +160,6 @@ function ModalContent({ submitFn }) {
                 label="Description"
                 mb="sm"
                 {...form.getInputProps("description")}
-              />
-              <Checkbox
-                mt="md"
-                label="Showcase on profile"
-                {...form.getInputProps("inProfile", { type: "checkbox" })}
               />
 
               <Group position="right" mt="md">
