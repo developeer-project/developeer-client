@@ -74,8 +74,9 @@ function ActivateProfileForm() {
             />
           </Stepper.Step>
           <Stepper.Completed>
-            <Button onClick={handleSubmit}>Submit form</Button>
-            Completed, click back button to get to previous step
+            <Center style={{ margin: "14% auto" }}>
+              <Button onClick={handleSubmit}>Submit form</Button>
+            </Center>
           </Stepper.Completed>
         </Stepper>
         {/* <Group position="apart" mt="lg">
