@@ -1,8 +1,11 @@
 .root_container {
-  border: 1px solid #ccc;
-  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  background-color: rgb(249, 255, 253);
+  width: 70%;
+  margin: auto auto;
+  min-width: 400px;
   min-height: 100px;
-
+  padding: 12px;
   div {
     display: flex;
     flex-flow: row wrap;
