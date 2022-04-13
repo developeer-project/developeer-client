@@ -51,16 +51,13 @@ const ProjectForm = (props) => {
         size="lg"
         transition="scale"
         opened={modalActive}
+        onClose={() => setModalActive(false)}
         withCloseButton={false}
         title="Add a new project">
         <ModalContent modalControl={setModalActive} submitFn={handleSubmit} />
       </Modal>
 
       <div className={styles.root_container}>
-        <Text mx="auto" align="center" weight={500}>
-          Add projects
-        </Text>
-
         <Group direction="row" spacing="md">
           {projects.map((project, index) => (
             <ProjectInfoCard project={project} key={index} />
@@ -93,6 +90,7 @@ export default ProjectForm;
 function ModalContent({ submitFn, modalControl }) {
   const fileInputRef = useRef();
   const [data, setData] = useState(["React", "Angular", "Svelte", "Vue"]);
+
   const handleChange = () => {
     // do something with event data
   };

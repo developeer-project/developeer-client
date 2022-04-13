@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Box, Group, ActionIcon } from "@mantine/core";
+import { Button, Box, Group, ActionIcon, Center } from "@mantine/core";
 import { Rotate } from "tabler-icons-react";
 import { Stepper } from "@mantine/core";
 import axios from "axios";
@@ -33,7 +33,10 @@ function ActivateProfileForm() {
   };
 
   return (
-    <>
+    <div
+      style={{
+        marginTop: "16vh",
+      }}>
       <Box mx="auto" style={{ width: "55%", minWidth: "400px" }}>
         <Stepper
           size="md"
@@ -90,7 +93,7 @@ function ActivateProfileForm() {
           <Button onClick={nextStep}>Next step</Button>
         </Group> */}
       </Box>
-    </>
+    </div>
   );
 }
 
