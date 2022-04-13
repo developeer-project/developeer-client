@@ -9,7 +9,7 @@ import ProfileFormPart2 from "../../components/profile/profileForm2";
 import ProjectForm from "../../components/profile/projectForm";
 
 function ActivateProfileForm() {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(0);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () =>
@@ -27,12 +27,19 @@ function ActivateProfileForm() {
     } catch (e) {
       console.error(e);
     }
+    localStorage.removeItem("formSaved1");
+    localStorage.removeItem("formSaved2");
+    localStorage.removeItem("formSavedProject");
   };
 
   return (
     <>
       <Box mx="auto" style={{ width: "55%", minWidth: "400px" }}>
-        <Stepper active={active} onStepClick={setActive} breakpoint="sm">
+        <Stepper
+          size="md"
+          active={active}
+          onStepClick={setActive}
+          breakpoint="sm">
           <Stepper.Step
             label="Fist step"
             description="Create an account"
