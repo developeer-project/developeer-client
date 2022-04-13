@@ -65,7 +65,6 @@ model UserProfile {
   interests      String[]
   user_id        String     @unique
   has_registered Boolean    @default(false)
-  // skills_id Int[]
   user           User       @relation(fields: [user_id], references: [id])
   skills_id      Int[]
   links          Links?

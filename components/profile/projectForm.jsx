@@ -15,16 +15,20 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/hooks";
 import { PlaylistAdd, LivePhoto, Rotate } from "tabler-icons-react";
-// import { Dropzone } from "@mantine/dropzone";
 
-// import ProjectCard from "../search-page/projects/Card";
 import ProjectInfoCard from "./ProjectInfoCard";
 import styles from "../../styles/projectform.module.scss";
+import { useLocalStorage } from "../../lib/utils/useLocalSt";
 
 const ProjectForm = (props) => {
   const { saveFormData, nextStep, prevStep } = props;
+
   const [modalActive, setModalActive] = useState(false);
-  const [projects, setProjects] = useState([]);
+  const [savedProjects, setSavedProjects] = useLocalStorage(
+    "formSavedProjects",
+    []
+  );
+  const [projects, setProjects] = useState(savedProjects);
 
   const newTrigger = () => {
     setModalActive(true);
@@ -33,6 +37,7 @@ const ProjectForm = (props) => {
   const handleSubmit = (projData) => {
     console.log("incoming project data", projData);
     setProjects([...projects, projData]);
+    setSavedProjects([...projects, projData]);
   };
 
   useEffect(() => {
@@ -50,6 +55,7 @@ const ProjectForm = (props) => {
         title="Add a new project">
         <ModalContent modalControl={setModalActive} submitFn={handleSubmit} />
       </Modal>
+
       <div className={styles.root_container}>
         <Text mx="auto" align="center" weight={500}>
           Add projects
