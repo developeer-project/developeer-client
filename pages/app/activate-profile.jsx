@@ -29,7 +29,7 @@ function ActivateProfileForm() {
     }
     localStorage.removeItem("formSaved1");
     localStorage.removeItem("formSaved2");
-    localStorage.removeItem("formSavedProject");
+    localStorage.removeItem("formSavedProjects");
   };
 
   return (

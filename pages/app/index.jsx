@@ -1,12 +1,25 @@
 import { Select } from "@mantine/core";
 import { Button } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
+import { useRouter } from "next/router";
 
 import SearchBar from "../../components/search-page/SearchBar";
 
 const app = () => {
   const [searchQuery, setSearchQuery] = useInputState("");
   const [searchType, setSearchType] = useInputState("domain");
+  const router = useRouter();
+
+  const handleSearch = () => {
+    console.log("do something and tehn push");
+    router.push({
+      pathname: "/app/search/results",
+      query: {
+        qryText: searchQuery,
+        qryFor: searchType,
+      },
+    });
+  };
 
   return (
     <div className="root_container">
@@ -32,9 +45,7 @@ const app = () => {
               />
             </div>
             <div className="search_btn">
-              <Button
-                onClick={(e) => console.log(searchQuery, searchType)}
-                size="lg">
+              <Button onClick={handleSearch} size="lg">
                 Search
               </Button>
             </div>
