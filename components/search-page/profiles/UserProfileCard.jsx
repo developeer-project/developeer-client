@@ -26,11 +26,11 @@ function UserProfileCard({users}) {
         </div>
         <div className="skills">
           <h6>Skills</h6>
-          <ul>
+           { <ul>
             {users.skills.map((skill) => ( 
               <li>{skill}</li>
             ))}
-           </ul>
+           </ul> } 
         </div>
         </div>
         <style jsx > {`
