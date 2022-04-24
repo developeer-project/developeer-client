@@ -30,7 +30,7 @@ const projects = ({ projects, techStacks, totalCount }) => {
 
   const pageChange = async (page) => {
     const response = await (
-      await fetch(`http://localhost:3000/api/project/?currPage=${page}`)
+      await fetch(`${process.env.NEXTAUTH_URL}/api/project/?currPage=${page}`)
     ).json();
     setUserSearchData(response.projects);
   };
@@ -72,13 +72,14 @@ const projects = ({ projects, techStacks, totalCount }) => {
 
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
-  const res = await (await fetch(`http://localhost:3000/api/project/`)).json();
+  const res = await (await fetch(`${process.env.NEXTAUTH_URL}/api/project/`)).json();
 
   const techStacks = await prisma.TechStack.findMany({
     select: {
       tech_stack: true,
     },
   });
+  console.log(techStacks)
   return {
     props: {
       projects: res.projects,

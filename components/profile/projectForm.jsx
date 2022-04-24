@@ -17,6 +17,7 @@ import { useForm } from "@mantine/hooks";
 import { PlaylistAdd, LivePhoto, Rotate } from "tabler-icons-react";
 
 import ProjectInfoCard from "./ProjectInfoCard";
+// import Card from "../search-page/projects/Card";
 import styles from "../../styles/projectform.module.scss";
 import { useLocalStorage } from "../../lib/utils/useLocalSt";
 
@@ -54,7 +55,7 @@ const ProjectForm = (props) => {
         onClose={() => setModalActive(false)}
         withCloseButton={false}
         title="Add a new project">
-        <ModalContent modalControl={setModalActive} submitFn={handleSubmit} />
+        <ModalContent modalControl={setModalActive} submitFn={handleSubmit} arr={props.arr}  />
       </Modal>
 
       <div className={styles.root_container}>
@@ -87,9 +88,9 @@ const ProjectForm = (props) => {
 
 export default ProjectForm;
 
-function ModalContent({ submitFn, modalControl }) {
+function ModalContent({ submitFn, modalControl, arr}) {
   const fileInputRef = useRef();
-  const [data, setData] = useState(["React", "Angular", "Svelte", "Vue"]);
+  const [data, setData] = useState(arr);
 
   const handleChange = () => {
     // do something with event data
@@ -98,9 +99,9 @@ function ModalContent({ submitFn, modalControl }) {
     initialValues: {
       title: "",
       link: "",
-      repo: "",
+      repo_link: "",
       description: "",
-      techStack: [],
+      tech_stack: [],
     },
 
     validate: {
@@ -139,7 +140,7 @@ function ModalContent({ submitFn, modalControl }) {
               <MultiSelect
                 style={{ height: "80px" }}
                 label="Tech stack"
-                {...form.getInputProps("techStack")}
+                {...form.getInputProps("tech_stack")}
                 data={data}
                 placeholder="Select items"
                 searchable
@@ -147,6 +148,7 @@ function ModalContent({ submitFn, modalControl }) {
                 getCreateLabel={(query) => `+ Create ${query}`}
                 onCreate={(query) => setData((current) => [...current, query])}
               />
+              {/* <InterestSelection {...form.getInputProps("interests")} arr={arr} /> */}
             </div>
           </Group>
           <Divider my="sm" variant="dotted" />
@@ -170,7 +172,7 @@ function ModalContent({ submitFn, modalControl }) {
                 required
                 label="Repo"
                 placeholder="Project repo"
-                {...form.getInputProps("repo")}
+                {...form.getInputProps("repo_link")}
                 mb="sm"
               />
               <Textarea

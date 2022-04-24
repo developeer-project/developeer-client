@@ -67,7 +67,7 @@ export default function ProjectInfoCard({ project }) {
           </Text>
         </Box>
         <Group direction="row" justify="space-between" align="center">
-          {project.techStack.map((tech) => (
+          {project.tech_stack.map((tech) => (
             <Badge variant="light" color="orange">
               {tech}
             </Badge>

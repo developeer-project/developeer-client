@@ -7,7 +7,7 @@ function UserProfileCard() {
         <span className="pro">PRO</span>
         <img
              className="round"
-             src="https://randomuser.me/api/portraits/women/79.jpg"
+             src="https://randomuser.me/api/portraits/men/79.jpg"
              alt="user"
       />
         <h3>Lexi Armstrong</h3>

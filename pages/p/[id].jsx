@@ -3,14 +3,14 @@ import Layout from "../../components/Layout";
 import Router from "next/router";
 
 async function publish(id) {
-  await fetch(`http://localhost:3000/api/publish/${id}`, {
+  await fetch(`${process.env.NEXTAUTH_URL}/api/publish/${id}`, {
     method: "PUT",
   });
   await Router.push("/");
 }
 
 async function destroy(id) {
-  await fetch(`http://localhost:3000/api/post/${id}`, {
+  await fetch(`${process.env.NEXTAUTH_URL}/api/post/${id}`, {
     method: "DELETE",
   });
   await Router.push("/");

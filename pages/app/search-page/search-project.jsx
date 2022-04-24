@@ -20,7 +20,7 @@ const searchProjects = ({ projects, techStacks, totalCount }) => {
   const search = async (page) => {
     const response = await (
       await fetch(
-        `http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`
+        `${process.env.NEXTAUTH_URL}/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`
       )
     ).json();
     setUserSearchData(response.searchedProject);
@@ -30,7 +30,7 @@ const searchProjects = ({ projects, techStacks, totalCount }) => {
   const pageChange = async (page) => {
     const response = await (
       await fetch(
-        `http://localhost:3000/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`
+        `${process.env.NEXTAUTH_URL}/api/project/search/?title=${title}&techStack=${techStack}&currPage=${page}`
       )
     ).json();
     setUserSearchData(response.searchedProject);
@@ -74,7 +74,7 @@ export async function getServerSideProps({ query }) {
   const prisma = new PrismaClient();
   const res = await (
     await fetch(
-      `http://localhost:3000/api/project/search/?title=${query.title}&techStack=${query.techStack}&currPage=${query.page}`
+      `${process.env.NEXTAUTH_URL}/api/project/search/?title=${query.title}&techStack=${query.techStack}&currPage=${query.page}`
     )
   ).json();
 
