@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ColorSchemeProvider } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
 import SSRProvider from "react-bootstrap/SSRProvider";
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import "../styles/globals.scss";
