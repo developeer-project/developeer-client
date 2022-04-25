@@ -1,13 +1,12 @@
 import React from "react";
 import { Title } from "@mantine/core";
-import userprofile01 from "../components/userprofile/userprofile01";
+import UserProfile01 from "../components/userprofile/UserProfile01";
 
 const profile = () => {
   return (
     <>
       
-      <userprofile01 />
-      <Title>Profile page not</Title>
+      <UserProfile01 />
       
     </>
   );
