@@ -63,23 +63,21 @@
 .profile_right_wrap{
         flex: 70%;
         border: 5pt solid white;
-        .header {
-          padding: 5px;
-          text-align: left;
-          background: #2e2e2e;
-          color: white;
-          font-size: 18px;
-        }
     }
 }
+
+.profile_skills{
+  .header {
+    padding: 5px;
+    text-align: left;
+    background: #2e2e2e;
+    color: white;
+    font-size: 18px;
+  }
 
 .profile_card {
   box-sizing: border-box;
 
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 .column {
   float: left;
@@ -109,4 +107,19 @@ body {
   text-align: center;
   background-color: #f1f1f1;
 }
+}
+}
+
+.about {
+  .header {
+    padding: 5px;
+    text-align: left;
+    background: #2e2e2e;
+    color: white;
+    font-size: 18px;
+  }
+  p {
+    color : grey;
+    font-size: small;
+  }
 }

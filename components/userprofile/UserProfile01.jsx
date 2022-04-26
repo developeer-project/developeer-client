@@ -26,10 +26,11 @@ const userprofile01 = () => {
 
       <div className={styles.profile_right_wrap}>
         aur kya details daalne hai idhar that goes here 
-        <div className={styles.header}>
+        <div className={styles.about}>
+          <div className={styles.header}>
           <h2>About</h2>
-        </div>
-        Baby shark, doo doo doo doo doo doo
+          </div>
+          <p>Baby shark, doo doo doo doo doo doo
 Baby shark, doo doo doo doo doo doo
 Baby shark, doo doo doo doo doo doo
 Baby shark!
@@ -57,13 +58,16 @@ Grandpa shark!
 Let’s go hunt, doo doo doo doo doo doo
 Let’s go hunt, doo doo doo doo doo doo
 Let’s go hunt, doo doo doo doo doo doo
-Let’s go hunt!
+Let’s go hunt!</p>
+        </div>
     {/* <div className={styles.profile_left_wrap}>
       Left Section
     </div> */}
+    <div className={styles.profile_skills}>
     <div className={styles.header}>
           <h2>Skills</h2>
         </div>
+        <p>
     <div className={styles.profile_card}>
     <div className={styles.row}>
   <div className={styles.column}>
@@ -98,6 +102,8 @@ Let’s go hunt!
     </div>
   </div>
 </div>
+</div>
+</p>
 </div>
       </div>
     </div>
