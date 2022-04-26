@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 export default async function getSearchedProject(req, res, next){
       if(req.method === 'GET'){
             const {title, techStack} = req.query;
+            console.log("TECHSTACK in API::",techStack)
             const perPage = Number(req.query.perPage) || 2;
             const currPage = Number(req.query.currPage) || 1;
 

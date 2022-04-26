@@ -4,6 +4,7 @@ import { Badge } from "@mantine/core";
 // import styles from "../../../styles/search-page/card.module.scss";
 
 const ProjectCard = ({ project }) => {
+  console.log("PROJECTSTTSTT:::",project.title)
   return (
     <>
       <div className="container">
@@ -17,15 +18,17 @@ const ProjectCard = ({ project }) => {
           </div>
           <div className="contentBx">
             <h2>{project.title}</h2>
+
             <p>{project.description}</p>
             <div className="size">
               <h3>Tech Stack</h3>
               <div className="break"> </div>
               <div className="grid-box1">
-                {project.techStack?.map((ts) => (
+                {project.tech_stack?.map((ts) => (
                   <Badge
                     variant="gradient"
-                    gradient={{ from: "#ed6ea0", to: "#ec8c69", deg: 35 }}>
+                    gradient={{ from: "#ed6ea0", to: "#ec8c69", deg: 35 }}
+                    sx={{ paddingRight: 10 }}>
                     {ts}
                   </Badge>
                 ))}
@@ -141,6 +144,7 @@ const ProjectCard = ({ project }) => {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            padding-bottom: 30px
           }
           .container .card .contentBx p {
             position: relative;
@@ -150,6 +154,11 @@ const ProjectCard = ({ project }) => {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            height:15%;
+            width:85%
+            text-align:centre;
+            padding-left:40px;
+            padding-right:40px;
           }
 
           .container .card .contentBx .size,
@@ -179,12 +188,13 @@ const ProjectCard = ({ project }) => {
           .container .card .contentBx .size h3,
           .container .card .contentBx .color h3 {
             color: white;
-            font-weight: 300;
-            font-size: 14px;
+            font-weight: 500;
+            font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-right: 5px;
             text-align: center;
+            padding-bottom: 15px
           }
 
           .container .card .contentBx .size span {
@@ -213,6 +223,7 @@ const ProjectCard = ({ project }) => {
             grid-template-columns: 30% 30% 30%;
             align-items: center;
             justify-content: center;
+            padding-bottom: 10px;
           }
 
           .break {
@@ -220,6 +231,7 @@ const ProjectCard = ({ project }) => {
             width: 100%;
             height: 0;
           }
+
         `}
       </style>
       {/* .container .card .contentBx .color span:nth-child(2) {

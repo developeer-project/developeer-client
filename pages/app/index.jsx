@@ -34,13 +34,13 @@ const app = () => {
               <Select
                 value={searchType}
                 onChange={setSearchType}
-                placeholder="Filter by"
+                placeholder="Search For"
                 size="md"
                 width="300"
                 data={[
-                  { value: "domain", label: "Domain" },
-                  { value: "tech", label: "Tech" },
-                  { value: "region", label: "Region" },
+                  // { value: "domain", label: "Domain" },
+                  { value: "projects", label: "Projects" },
+                  { value: "profiles", label: "Profiles" },
                 ]}
               />
             </div>
