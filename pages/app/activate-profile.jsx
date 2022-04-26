@@ -3,12 +3,19 @@ import { Button, Box, Group, ActionIcon, Center } from "@mantine/core";
 import { Rotate } from "tabler-icons-react";
 import { Stepper } from "@mantine/core";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
+
 
 import ProfileFormPart1 from "../../components/profile/profileForm1";
 import ProfileFormPart2 from "../../components/profile/profileForm2";
 import ProjectForm from "../../components/profile/projectForm";
 
-function ActivateProfileForm() {
+function ActivateProfileForm({ arr, arr_skills}) {
+  // console.log("ARRR:  ",arr)
+  const { data: session, status: authStatus } = useSession();
+
+
   const [active, setActive] = useState(0);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
@@ -23,7 +30,7 @@ function ActivateProfileForm() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("/api/test", formData);
+      await axios.post("/api/register", formData);
     } catch (e) {
       console.error(e);
     }
@@ -31,12 +38,13 @@ function ActivateProfileForm() {
     localStorage.removeItem("formSaved2");
     localStorage.removeItem("formSavedProjects");
   };
-
+  // console.log("Sessionnnnn:  ",session)
   return (
     <div
       style={{
         marginTop: "16vh",
       }}>
+        
       <Box mx="auto" style={{ width: "55%", minWidth: "400px" }}>
         <Stepper
           size="md"
@@ -51,6 +59,8 @@ function ActivateProfileForm() {
               saveFormData={saveData}
               nextStep={nextStep}
               prevStep={prevStep}
+              arr={arr}
+              arr_skills={arr_skills}
             />
           </Stepper.Step>
           <Stepper.Step
@@ -71,6 +81,7 @@ function ActivateProfileForm() {
               saveFormData={saveData}
               nextStep={nextStep}
               prevStep={prevStep}
+              arr={arr}
             />
           </Stepper.Step>
           <Stepper.Completed>
@@ -99,3 +110,22 @@ function ActivateProfileForm() {
 }
 
 export default ActivateProfileForm;
+export async function getServerSideProps() {
+  const res = await (await fetch(`${process.env.NEXTAUTH_URL}/api/getTechStack/`)).json();
+  const res_skills = await (await fetch(`${process.env.NEXTAUTH_URL}/api/getSkills/`)).json();
+  console.log("RES___:::",res)
+    const arr = []
+    const arr_skills = []
+    for(let i=0; i<res.length; i++){
+      arr.push(res[i].tech_stack);
+    }
+    for(let i=0; i<res_skills.length; i++){
+      arr_skills.push(res_skills[i].skill);
+    }
+  return {
+    props: {
+      arr,
+      arr_skills
+    },
+  };
+}
