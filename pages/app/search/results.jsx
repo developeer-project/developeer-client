@@ -1,19 +1,41 @@
 import { TextInput, Text, Select, Paper } from "@mantine/core";
-import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
-
+import { dummyData } from "../../../lib/utils/testobj";
+import Card from "../../../components/search-page/projects/Card"
 import styles from "../../../styles/results.module.scss";
+import { Car } from "tabler-icons-react";
+import axios from "axios";
+import { Button } from "@mantine/core";
+import { useRouter } from "next/router";
+
+
 
 const resultsPage = (props) => {
   const {
     searchRes,
-    qryData: { qryFor, qryText },
-    searchCount,
+    qryData: { qryFor, qryText, qryTechStack, qrypage },
+    tech_stack,
+    // searchCount,
+    data
   } = props;
 
   const [searchQry, setSearchQry] = useState(qryText);
   const [searchFor, setSearchFor] = useState(qryFor);
+  const [searchTechStack, setSearchTechStack] = useState(qryTechStack);
 
+  const router = useRouter();
+
+  const handleSearch = () => {
+    console.log("do something and tehn push");
+    router.push({
+      pathname: "/app/search/results",
+      query: {
+        qryText: searchQry,
+        qryFor: searchFor,
+        qryTechStack: searchTechStack,
+      },
+    });
+  };
   return (
     <div className={styles.page__root}>
       <div className={styles.options__container}>
@@ -36,65 +58,106 @@ const resultsPage = (props) => {
           size="md"
           radius="md"
           data={[
-            { value: "domain", label: "Domain" },
-            { value: "tech", label: "Tech" },
-            { value: "region", label: "Region" },
-            { value: "vue", label: "Vue" },
+            // { value: "domain", label: "Domain" },
+            { value: "projects", label: "Projects" },
+            { value: "profiles", label: "Profiles" },
           ]}
         />
+        <Select
+            value={searchTechStack}
+            onChange={setSearchTechStack}
+            placeholder="Search Tech Stack"
+            size="md"
+            width="300"
+            data={tech_stack}
+        />
+
+        <Button onClick={handleSearch} size="lg">
+            Search
+        </Button>
       </div>
       <div className={styles.results__container}>
         <h3>Showing results</h3>
         <div className={styles.results_data__wrap}>
-          {[...Array(searchCount)].map((s) => (
-            <Demo key={s} />
-          ))}
+          {searchRes.length !== 0 ? searchRes.map((project) => (
+          <Card project = {project}/>
+        )) : "No results found"}
+          
         </div>
       </div>
     </div>
   );
 };
 
-function Demo() {
-  return (
-    <div style={{ width: "240px" }}>
-      <Paper shadow="md" radius="md" p="md">
-        <Text>Paper is the most basic ui component</Text>
-        <Text>
-          Use it to create cards, dropdowns, modals and other components that
-          require background with shadow
-        </Text>
-      </Paper>
-    </div>
-  );
-}
+// function Demo() {
+//   return (
+//     <div style={{ width: "240px" }}>
+//       {/* <Paper shadow="md" radius="md" p="md">
+//         <Text>Paper is the most basic ui component</Text>
+//         <Text>
+//           Use it to create cards, dropdowns, modals and other components that
+//           require background with shadow
+//         </Text>
+//       </Paper> */}
+
+//     </div>
+//   );
+// }
 
 export async function getServerSideProps(ctx) {
   // Fetch data from external API
-  console.log(ctx.query);
-  const { qryText, qryFor } = ctx.query;
-  //   const res = await fetch(`https://.../data`);
-  const res = {
-    message: "hello world",
-    results: [
-      {
-        data: "hello world",
+  console.log("CTX-QUERY:::",ctx.query);
+  const { qryText, qryFor, qryTechStack, qrypage } = ctx.query;
+
+  if (qryFor == 'projects'){
+    const res = await axios.get(`http://localhost:3000/api/project/search/`,{
+        
+        params:{
+          title: qryText,
+          techStack: qryTechStack || "",
+          currPage: qrypage,
+        }
+      }
+    )
+    const tech_stack = await axios.get(`${process.env.NEXTAUTH_URL}/api/getTechStack/ `)
+    const tech_stack_data = tech_stack.data
+    const arr_techStack = []
+    for(let i=0; i<tech_stack_data.length; i++){
+      arr_techStack.push(tech_stack_data[i].tech_stack);
+    }
+    console.log("RES OO::", arr_techStack)
+
+    return {
+      props: {
+        searchRes: res.data['searchedProject'],
+        qryData: {
+          qryText,
+          qryFor,
+          qryTechStack: qryTechStack || "",
+          qrypage: qrypage || "",
+        },
+        tech_stack: arr_techStack,
+        // searchCount: 22,
       },
-    ],
-  };
+    };
+  }
+  //   const res = await fetch(`https://.../data`);
+  // const res = {
+  //  data:dummyData,
+  // };
   //   const data = res.json()
 
   // Pass data to the page via props
-  return {
-    props: {
-      searchRes: res,
-      qryData: {
-        qryText,
-        qryFor,
-      },
-      searchCount: 22,
-    },
-  };
+  // return {
+  //   props: {
+  //     searchRes: res,
+  //     qryData: {
+  //       qryText,
+  //       qryFor,
+  //     },
+  //     // searchCount: 22,
+  //   },
+  // };
 }
 
 export default resultsPage;

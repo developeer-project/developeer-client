@@ -1,10 +1,13 @@
 /// creatable multiselect
 import { useState } from "react";
 import { MultiSelect } from "@mantine/core";
+// import { prisma } from "../../lib/prisma";
 
 export default function InterestSelection(props) {
-  const [data, setData] = useState(["React", "Angular", "Svelte", "Vue"]);
+  // const [data, setData] = useState(["React", "Angular", "Svelte", "Vue"]);
+  const [data, setData] = useState(props.arr);
 
+  
   return (
     <MultiSelect
       label="Interests"
