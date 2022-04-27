@@ -30,6 +30,14 @@ const Slider = () => {
         <SliderCard />
         <SliderCard />
         <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
+        <SliderCard />
         {/* </marquee> */}
       </div>
 

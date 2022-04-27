@@ -28,6 +28,24 @@ const SliderCard = (props) => {
           );
           border-radius: 10px;
         }
+
+        .card_box {
+          animation: MoveUpDown 20s linear infinite;
+        }
+
+        @keyframes MoveUpDown {
+          0% {
+            transform: translateY(-150px);
+          }
+
+          50% {
+            transform: translateY(150px);
+          }
+
+          100% {
+            transform: translateY(-150px);
+          }
+        }
       `}</style>
       {/* dynamic  styles */}
       {/* <style jsx></style> */}
