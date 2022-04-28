@@ -54,12 +54,11 @@
   background: linear-gradient(to right, #363795, #005c97);
   opacity: 0.5;
 }
-
 .message {
   background-color: #161d24;
   padding: 1em;
   border-radius: 10px;
   flex-grow: 0;
   border-bottom-left-radius: 0;
-  color: white;
+  color: rgb(250, 241, 241);
 }
