@@ -1,7 +1,8 @@
 import { TextInput, Text, Select, Paper } from "@mantine/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { dummyData } from "../../../lib/utils/testobj";
-import Card from "../../../components/search-page/projects/Card"
+import Card from "../../../components/search-page/projects/Card";
+import { ProfileCard } from "../../../components/ProfileCard";
 import styles from "../../../styles/results.module.scss";
 import { Car } from "tabler-icons-react";
 import axios from "axios";
@@ -19,6 +20,7 @@ const resultsPage = (props) => {
     data
   } = props;
 
+  const [is_profile, setIs_profile] = useState(true);
   const [searchQry, setSearchQry] = useState(qryText);
   const [searchFor, setSearchFor] = useState(qryFor);
   const [searchTechStack, setSearchTechStack] = useState(qryTechStack);
@@ -36,6 +38,34 @@ const resultsPage = (props) => {
       },
     });
   };
+  let CardDisplay;
+  if (searchFor === 'profiles'){
+    // setIs_profile(true);
+    CardDisplay = searchRes.map((project) => (
+      <div style={{width:"400px"}}>
+
+      <ProfileCard user = {project}/>
+      </div>
+    ))
+    console.log("In profiles");
+    // CardDisplay = <ProfileCard/>
+    
+  }
+  
+  if (searchFor === 'projects'){
+    // setIs_profile(false);
+    
+    CardDisplay = searchRes.map((project) => (
+      <div style={{width:"400px"}}>
+
+      <Card project = {project}/>
+      </div>
+    ))
+    
+
+  }
+
+   
   return (
     <div className={styles.page__root}>
       <div className={styles.options__container}>
@@ -66,7 +96,7 @@ const resultsPage = (props) => {
         <Select
             value={searchTechStack}
             onChange={setSearchTechStack}
-            placeholder="Search Tech Stack"
+            placeholder= "Search Skills/Tech Stack"
             size="md"
             width="300"
             data={tech_stack}
@@ -79,35 +109,22 @@ const resultsPage = (props) => {
       <div className={styles.results__container}>
         <h3>Showing results</h3>
         <div className={styles.results_data__wrap}>
-          {searchRes.length !== 0 ? searchRes.map((project) => (
+          {/* {searchRes.length !== 0 ? searchRes.map((project) => (
           <Card project = {project}/>
-        )) : "No results found"}
-          
+        )) : "No results found"} */}
+        {CardDisplay}          
         </div>
       </div>
     </div>
   );
 };
 
-// function Demo() {
-//   return (
-//     <div style={{ width: "240px" }}>
-//       {/* <Paper shadow="md" radius="md" p="md">
-//         <Text>Paper is the most basic ui component</Text>
-//         <Text>
-//           Use it to create cards, dropdowns, modals and other components that
-//           require background with shadow
-//         </Text>
-//       </Paper> */}
 
-//     </div>
-//   );
-// }
 
 export async function getServerSideProps(ctx) {
   // Fetch data from external API
   console.log("CTX-QUERY:::",ctx.query);
-  const { qryText, qryFor, qryTechStack, qrypage } = ctx.query;
+  const { qryText, qryFor, qryTechStack, qrypage, qrySkill } = ctx.query;
 
   if (qryFor == 'projects'){
     const res = await axios.get(`http://localhost:3000/api/project/search/`,{
@@ -125,7 +142,7 @@ export async function getServerSideProps(ctx) {
     for(let i=0; i<tech_stack_data.length; i++){
       arr_techStack.push(tech_stack_data[i].tech_stack);
     }
-    console.log("RES OO::", arr_techStack)
+    console.log("RES OOf project::", res.data)
 
     return {
       props: {
@@ -140,6 +157,38 @@ export async function getServerSideProps(ctx) {
         // searchCount: 22,
       },
     };
+  }
+
+  if (qryFor === 'profiles'){
+    const res = await axios.get(`${process.env.NEXTAUTH_URL}/api/user/search/`,{
+        
+      params:{
+        title: qryText,
+        skill: qryTechStack || "",
+        currPage: qrypage || "",
+      }
+    }
+  )
+  const tech_stack = await axios.get(`${process.env.NEXTAUTH_URL}/api/getTechStack/ `)
+  const tech_stack_data = tech_stack.data
+  const arr_techStack = []
+  for(let i=0; i<tech_stack_data.length; i++){
+    arr_techStack.push(tech_stack_data[i].tech_stack);
+  }
+  console.log("RES OOf profile::", arr_techStack)
+
+  return {
+    props: {
+      searchRes: res.data['searchedUsers'],
+      qryData: {
+        qryText,
+        qryFor,
+        qryTechStack: qryTechStack || "",
+        qrypage: qrypage || "",
+      },
+      tech_stack: arr_techStack,
+    },
+  };
   }
   //   const res = await fetch(`https://.../data`);
   // const res = {

@@ -10,7 +10,7 @@ const BottomSect = () => {
           alt="logo"
         />
         <div className={styles.text_below_logo}>
-          © 2022 Registered Trademark
+          {/* Â© 2022 Registered Trademark */}
         </div>
       </div>
 
@@ -19,46 +19,56 @@ const BottomSect = () => {
           <div className="d1">
             <ul>
               <li>
-                <b>Home</b>
+                Privacy
               </li>
-              <li>Find</li>
-              <li>Messages</li>
+              <li>Security</li>
+              <li>Safety</li>
+              <li>Data</li>
+              <li>Resources</li>
             </ul>
           </div>
           <div className="d1">
             <ul>
               <li>
-                <b>Contact</b>
+                Accessibility
               </li>
-              <li>Find</li>
-              <li>Messages</li>
+              <li>Careers</li>
+              <li>Advertising</li>
+              <li>Mobile</li>
+              <li>Report</li>
             </ul>
           </div>
           <div className="d1">
             <ul>
               <li>
-                <b>Disclaimer</b>
+              Questions
               </li>
-              <li>Find</li>
-              <li>Messages</li>
+              <li>Solutions</li>
+              <li>Ticket</li>
+              <li>Terms</li>
+              <li>Support</li>
             </ul>
           </div>
           <div className="d1">
             <ul>
               <li>
-                <b>T and C</b>
+                Contact
               </li>
-              <li>Find</li>
-              <li>Messages</li>
+              <li>Socials</li>
+              <li>Docs</li>
+              <li>Blog</li>
+              <li>Discord</li>
             </ul>
           </div>
           <div className="d1">
             <ul>
               <li>
-                <b>Help</b>
+                About
               </li>
-              <li>Find</li>
-              <li>Messages</li>
+              <li>Menu</li>
+              <li>FAQ</li>
+              <li>Donate</li>
+              <li>Services</li>
             </ul>
           </div>
         </div>

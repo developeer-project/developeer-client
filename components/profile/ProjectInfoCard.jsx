@@ -13,6 +13,7 @@ import {
 import { Link, BrandGithub } from "tabler-icons-react";
 
 export default function ProjectInfoCard({ project }) {
+  console.log("Project in project info card", project)
   const theme = useMantineTheme();
 
   const secondaryColor =

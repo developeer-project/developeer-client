@@ -1,6 +1,6 @@
 .page__root {
   padding: 0 6px;
-  background-color: rgb(245, 245, 245);
+  background-color: #1A1B1E;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
 }
 
 .results__container {
-  border: 1px solid violet;
+  // border: 1px solid violet;
   padding: 1rem 1.2rem;
 
   .results_data__wrap {
@@ -30,6 +30,6 @@
     display: flex;
     flex-flow: row wrap;
     width: 96%;
-    gap: 0.8rem;
+    // gap: 0.8rem;
   }
 }

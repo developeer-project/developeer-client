@@ -4,7 +4,6 @@ import {
   signIn,
   getCsrfToken,
 } from "next-auth/react";
-
 import { Button, Center, Input } from "@mantine/core";
 import Image from "next/image";
 import { useForm } from "@mantine/hooks";
@@ -19,7 +18,7 @@ export default function SignIn({ providers, csrfToken }) {
         <Image
           layout="fill"
           objectFit="cover"
-          src="https://images.unsplash.com/photo-1484242857719-4b9144542727?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80"
+          src="https://cdn.discordapp.com/attachments/792301782507585539/948520311140253716/pexels-rodolfo-clix-1036936.jpg"
         />
       </div>
       {/* map all selected providers */}
@@ -116,50 +115,3 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
-/*
-// If older than Next.js 9.3
-SignIn.getInitialProps = async () => {
-  return {
-    providers: await getProviders()
-  }
-}
-*/
-
-// import { providers, signIn, getSession, csrfToken } from "next-auth/react";
-
-// function signin({ providers }) {
-//   return (
-//     <div>
-//       {Object.values(providers).map((provider) => {
-//         return (
-//           <div key={provider.name}>
-//             <button onClick={() => signIn(provider.id)}>
-//               Sign in with {provider.name}
-//             </button>
-//           </div>
-//         );
-//       })}
-//     </div>
-//   );
-// }
-
-// export default signin;
-
-// export async function getServerSideProps(context) {
-//       const { req } = context;
-//       const session = await getSession({ req });
-
-//       if (session) {
-//         return {
-//           redirect: { destination: "/" },
-//         };
-//       }
-
-//       return {
-//         props: {
-//           providers: await providers(context),
-//           csrfToken: await csrfToken(context),
-//         },
-//       };
-// }
