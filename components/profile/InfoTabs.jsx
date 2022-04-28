@@ -4,7 +4,7 @@ import { Tabs, Box, SimpleGrid, TextInput } from "@mantine/core";
 import { Photo, MessageCircle, Settings } from "tabler-icons-react";
 import { At } from "tabler-icons-react";
 
-export function InfoTab() {
+export function InfoTab(props) {
   const projects = [
     {
       image:
@@ -54,7 +54,7 @@ export function InfoTab() {
   );
 }
 
-function DeveloperInfo() {
+function DeveloperInfo(props) {
   return (
     <Box>
       <SimpleGrid cols={2} spacing="xl">
