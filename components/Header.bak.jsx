@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Database } from "tabler-icons-react";
 import {
   createStyles,
   Header,
+  Button,
   Group,
   ActionIcon,
   Container,
@@ -12,6 +14,8 @@ import { BrandTwitter, BrandYoutube, BrandInstagram } from "tabler-icons-react";
 // import { MantineLogo } from "../../shared/MantineLogo";
 import Image from "next/image";
 import Logo from "../public/Logo.png";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -62,6 +66,7 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
+    fontFamily: "sans-serif",
 
     "&:hover": {
       backgroundColor:
@@ -87,20 +92,21 @@ export function HeaderMiddle({ links }) {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
+  const ssn = useSession();
+
+  console.log(ssn);
 
   const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}>
-      {link.label}
-    </a>
+    <Link href={link.link}>
+      <a
+        key={link.label}
+        href={link.link}
+        className={cx(classes.link, {
+          [classes.linkActive]: active === link.link,
+        })}>
+        {link.label}
+      </a>
+    </Link>
   ));
 
   return (
@@ -112,7 +118,7 @@ export function HeaderMiddle({ links }) {
           size="sm"
           className={classes.burger}
         />
-        <Group className={classes.links} spacing={5}>
+        <Group className={classes.links} align="center" spacing={5}>
           {items}
         </Group>
 
@@ -120,15 +126,20 @@ export function HeaderMiddle({ links }) {
         <Image src={Logo} />
 
         <Group spacing={0} className={classes.social} position="right" noWrap>
-          <ActionIcon size="lg">
-            <BrandTwitter size={18} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <BrandYoutube size={18} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <BrandInstagram size={18} />
-          </ActionIcon>
+          <Link
+            href={
+              ssn.status === "authenticated"
+                ? "/app/activate-profile"
+                : "/auth/signin"
+            }>
+            <Button
+              loading={ssn.status === "loading"}
+              variant="gradient"
+              size="sm"
+              gradient={{ from: "orange", to: "red" }}>
+              {ssn.status === "authenticated" ? "My Profile" : "Get Started"}
+            </Button>
+          </Link>
         </Group>
       </Container>
     </Header>

@@ -11,6 +11,7 @@ import {
   Box,
 } from "@mantine/core";
 import { ReceiptOff, Flame, CircleDotted, FileCode } from "tabler-icons-react";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -88,15 +89,17 @@ export function FeaturesSection() {
             No more wasting of time asking friends, getting stuck for no support
             and guidance.
           </Text>
-
-          <Button
-            variant="gradient"
-            gradient={{ deg: 133, from: "blue", to: "cyan" }}
-            size="lg"
-            radius="md"
-            mt="xl">
-            Get started
-          </Button>
+          <Link href="/app">
+            <Button
+              href="/app"
+              variant="gradient"
+              gradient={{ deg: 133, from: "blue", to: "cyan" }}
+              size="lg"
+              radius="md"
+              mt="xl">
+              Get started
+            </Button>
+          </Link>
         </Col>
         <Col span={12} md={7}>
           <SimpleGrid
