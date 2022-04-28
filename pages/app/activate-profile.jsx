@@ -5,16 +5,15 @@ import { Stepper } from "@mantine/core";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { getSession } from "next-auth/react";
-
+import { useRouter } from "next/router";
 
 import ProfileFormPart1 from "../../components/profile/profileForm1";
 import ProfileFormPart2 from "../../components/profile/profileForm2";
 import ProjectForm from "../../components/profile/projectForm";
 
-function ActivateProfileForm({ arr, arr_skills}) {
+function ActivateProfileForm({ arr, arr_skills }) {
   // console.log("ARRR:  ",arr)
   const { data: session, status: authStatus } = useSession();
-
 
   const [active, setActive] = useState(0);
   const nextStep = () =>
@@ -22,15 +21,18 @@ function ActivateProfileForm({ arr, arr_skills}) {
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
   const [formData, setFormData] = useState({});
+  const router = useRouter();
 
   const saveData = (data) => {
     console.log("save global form ", data);
     setFormData({ ...formData, ...data });
+    R;
   };
 
   const handleSubmit = async () => {
     try {
       await axios.post("/api/register", formData);
+      router.push("/");
     } catch (e) {
       console.error(e);
     }
@@ -44,7 +46,6 @@ function ActivateProfileForm({ arr, arr_skills}) {
       style={{
         marginTop: "16vh",
       }}>
-        
       <Box mx="auto" style={{ width: "55%", minWidth: "400px" }}>
         <Stepper
           size="md"
@@ -111,21 +112,25 @@ function ActivateProfileForm({ arr, arr_skills}) {
 
 export default ActivateProfileForm;
 export async function getServerSideProps() {
-  const res = await (await fetch(`${process.env.NEXTAUTH_URL}/api/getTechStack/`)).json();
-  const res_skills = await (await fetch(`${process.env.NEXTAUTH_URL}/api/getSkills/`)).json();
-  console.log("RES___:::",res)
-    const arr = []
-    const arr_skills = []
-    for(let i=0; i<res.length; i++){
-      arr.push(res[i].tech_stack);
-    }
-    for(let i=0; i<res_skills.length; i++){
-      arr_skills.push(res_skills[i].skill);
-    }
+  const res = await (
+    await fetch(`${process.env.NEXTAUTH_URL}/api/getTechStack/`)
+  ).json();
+  const res_skills = await (
+    await fetch(`${process.env.NEXTAUTH_URL}/api/getSkills/`)
+  ).json();
+  console.log("RES___:::", res);
+  const arr = [];
+  const arr_skills = [];
+  for (let i = 0; i < res.length; i++) {
+    arr.push(res[i].tech_stack);
+  }
+  for (let i = 0; i < res_skills.length; i++) {
+    arr_skills.push(res_skills[i].skill);
+  }
   return {
     props: {
       arr,
-      arr_skills
+      arr_skills,
     },
   };
 }
