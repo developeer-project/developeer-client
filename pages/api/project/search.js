@@ -1,6 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
+
+import prisma from '../../../lib/prisma';
 
 export default async function getSearchedProject(req, res, next){
       if(req.method === 'GET'){
