@@ -1,12 +1,15 @@
-import Head from 'next/head'
-import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router';
-const AblyChatComponent = dynamic(() => import('../components/AblyChatComponent'), { ssr: false });
+import Head from "next/head";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+const AblyChatComponent = dynamic(
+  () => import("../components/AblyChatComponent"),
+  { ssr: false }
+);
 
 export default function Home() {
   const router = useRouter();
   const { chat_with } = router.query;
-  console.log("CHATWITH::",chat_with)
+
   return (
     <div className="container">
       <Head>
@@ -15,7 +18,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">Message {chat_with}</h1>
+        <h3 className="title">Send message to {chat_with}</h3>
         <AblyChatComponent />
       </main>
 
@@ -26,5 +29,5 @@ export default function Home() {
         ...        
       `}</style> */}
     </div>
-  )
+  );
 }

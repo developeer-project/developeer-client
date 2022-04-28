@@ -63,16 +63,9 @@ import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
-<<<<<<< HEAD
 
 // import PrismaInstance from "../../../lib/prisma";
 const prisma = new PrismaClient();
-=======
-
-// import PrismaInstance from "../../../lib/prisma";
-const prisma = new PrismaClient();
-
->>>>>>> origin/development2
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -101,23 +94,16 @@ export default NextAuth({
         },
       },
       from: process.env.EMAIL_FROM,
-
     }),
     // ...add more providers here
   ],
   pages: {
-    signIn: '/auth/signin',
+    signIn: "/auth/signin",
     // signOut: '/auth/signout',
   },
   session: {
     strategy: "jwt",
   },
-<<<<<<< HEAD
   theme: "dark",
   debug: true,
 });
-=======
-  theme: 'dark',
-  debug: true,
-});
->>>>>>> origin/development2

@@ -127,6 +127,7 @@ export function HeaderMiddle({ links }) {
 
         <Group spacing={0} className={classes.social} position="right" noWrap>
           <Link
+            passHref
             href={
               ssn.status === "authenticated"
                 ? "/app/activate-profile"
@@ -135,6 +136,7 @@ export function HeaderMiddle({ links }) {
             <Button
               loading={ssn.status === "loading"}
               variant="gradient"
+              component="a"
               size="sm"
               gradient={{ from: "orange", to: "red" }}>
               {ssn.status === "authenticated" ? "My Profile" : "Get Started"}
