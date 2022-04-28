@@ -10,7 +10,7 @@ export default async function getUser(req, res, next){
                         id: Number(id),
                   },
             });
-            res.send({'message':user})
+            res.send({user})
       }
 
       if(req.method === 'DELETE'){

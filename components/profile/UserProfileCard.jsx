@@ -1,5 +1,6 @@
 import React from "react";
 import { createStyles, Card, Avatar, Text, Group, Button } from "@mantine/core";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -16,7 +17,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function UserCard({ image, avatar, name, job, stats }) {
+export function UserCard({ image, avatar, name, job, stats, userData }) {
   const { classes, theme } = useStyles();
   var stats = [
     {
@@ -51,7 +52,7 @@ export function UserCard({ image, avatar, name, job, stats }) {
         className={classes.avatar}
       />
       <Text align="center" size="lg" weight={500} mt="sm">
-        {name || "Riya k Hatwar"}
+        {userData.name || "Jhon K Doe"}
       </Text>
       <Text align="center" size="sm" color="dimmed">
         {job || "Full stack desinger"}

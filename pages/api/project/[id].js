@@ -6,12 +6,12 @@ export default async function getUser(req, res, next){
       const { id }  = req.query;
       if(req.method === 'GET'){
             
-            const project = await prisma.Projects.findUnique({
+            const project = await prisma.Projects.findMany({
                   where:{
-                        id: Number(id),
+                        user_profile_id: Number(id),
                   },
             });
-            res.send({'message':project})
+            res.send({project})
       }
 
       if(req.method === 'DELETE'){

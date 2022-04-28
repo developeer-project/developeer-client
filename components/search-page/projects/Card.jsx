@@ -7,7 +7,7 @@ const ProjectCard = ({ project }) => {
   console.log("PROJECTSTTSTT:::",project.title)
   return (
     <>
-      <div className="container">
+      <div className="container" >
         <div className="card">
           <div className="imgBx">
             <img
@@ -68,6 +68,7 @@ const ProjectCard = ({ project }) => {
             background: #232323;
             border-radius: 20px;
             overflow: hidden;
+            border: 1px solid silver;
           }
 
           .container .card:before {

@@ -5,6 +5,9 @@ import { useState } from "react";
 import { ColorSchemeProvider } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import SSRProvider from "react-bootstrap/SSRProvider";
+
 import "../styles/globals.scss";
 import Layout from "../components/Layout";
 
@@ -43,12 +46,15 @@ export default function App(props) {
               loader: "bars",
             }}>
             <NormalizeCSS />
+            {/* <SSRProvider> */}
+
             <GlobalStyles />
             <NotificationsProvider>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
             </NotificationsProvider>
+            {/* </SSRProvider> */}
           </MantineProvider>
         </ColorSchemeProvider>
       </SessionProvider>
