@@ -2,8 +2,8 @@ import React from "react";
 import styles from "../../styles/homepage-comps/bottomsect.module.scss";
 
 const BottomSect = () => {
-    return (
-        <div className={styles.foot_wrap}>
+  return (
+    <div className={styles.foot_wrap}>
       <div className={styles.foot_left_wrap}>
         <img
           src="https://cdn.discordapp.com/attachments/951426015404654612/952147112060133426/D2_logo.png"
@@ -66,6 +66,5 @@ const BottomSect = () => {
     </div>
   );
 };
-
 
 export default BottomSect;

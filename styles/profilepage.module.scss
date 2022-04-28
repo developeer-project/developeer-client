@@ -1,0 +1,30 @@
+.root_container {
+  background-color: rgb(22, 22, 24);
+
+  .cover_image {
+    min-height: 28vh;
+    background-image: url(https://images.pexels.com/photos/3678799/pexels-photo-3678799.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  }
+}
+
+.profile_content {
+  //   border: 1px solid yellow;
+  margin: 0 5%;
+  min-height: 65vh;
+  margin-top: -6rem;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+  .card__box {
+    width: 26%;
+
+    // background-color: azure;
+    min-width: 400px;
+    // border: 2px solid salmon;
+  }
+  .info__box {
+    background-color: rgb(32, 32, 32);
+    flex-grow: 1;
+    padding: 1rem;
+  }
+}

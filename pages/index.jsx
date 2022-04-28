@@ -6,6 +6,8 @@ import MidSect from "../components/homepage/MidSect";
 import TopSection from "../components/homepage/TopSection";
 import BottomSect from "../components/homepage/BottomSect";
 import QuoteSection from "../components/homepage/QuoteSection";
+import { FeaturesSection } from "../components/homepage/FeatureSection";
+import { StatusSection } from "../components/homepage/StatsSection";
 
 const pageTitle = () => "Develo<peer/>";
 
@@ -16,9 +18,9 @@ const HomePage = () => {
         <title>{pageTitle}</title>
       </Head>
       <TopSection />
-      <Flip bottom>
-        <MidSect />
-      </Flip>
+      <FeaturesSection />
+      <StatusSection />
+      {/* <MidSect /> */}
       <QuoteSection />
       <BottomSect />
     </>

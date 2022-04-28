@@ -14,7 +14,7 @@ export default function App(props) {
     pageProps: { session, ...pageProps },
   } = props;
 
-  const [colorScheme, setColorScheme] = useState("light");
+  const [colorScheme, setColorScheme] = useState("dark");
 
   const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
@@ -35,15 +35,13 @@ export default function App(props) {
       <SessionProvider session={session}>
         <ColorSchemeProvider
           colorScheme={colorScheme}
-          toggleColorScheme={toggleColorScheme}
-        >
+          toggleColorScheme={toggleColorScheme}>
           <MantineProvider
             theme={{
               /** Put your mantine theme override here */
               colorScheme,
               loader: "bars",
-            }}
-          >
+            }}>
             <NormalizeCSS />
             <GlobalStyles />
             <NotificationsProvider>

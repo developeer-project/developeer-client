@@ -4,6 +4,7 @@ import {
   signIn,
   getCsrfToken,
 } from "next-auth/react";
+
 import { Button, Center, Input } from "@mantine/core";
 import Image from "next/image";
 import { useForm } from "@mantine/hooks";
@@ -18,7 +19,7 @@ export default function SignIn({ providers, csrfToken }) {
         <Image
           layout="fill"
           objectFit="cover"
-          src="https://cdn.discordapp.com/attachments/792301782507585539/948520311140253716/pexels-rodolfo-clix-1036936.jpg"
+          src="https://images.unsplash.com/photo-1484242857719-4b9144542727?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80"
         />
       </div>
       {/* map all selected providers */}
