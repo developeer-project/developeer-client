@@ -115,20 +115,7 @@ const resultsPage = (props) => {
   );
 };
 
-// function Demo() {
-//   return (
-//     <div style={{ width: "240px" }}>
-//       {/* <Paper shadow="md" radius="md" p="md">
-//         <Text>Paper is the most basic ui component</Text>
-//         <Text>
-//           Use it to create cards, dropdowns, modals and other components that
-//           require background with shadow
-//         </Text>
-//       </Paper> */}
 
-//     </div>
-//   );
-// }
 
 export async function getServerSideProps(ctx) {
   // Fetch data from external API

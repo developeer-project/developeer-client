@@ -14,6 +14,8 @@ import {
 import { dummyData } from '../lib/utils/testobj';
 import { MessageCircle } from 'tabler-icons-react';
 import { Message } from 'tabler-icons-react';
+import Link from "next/link";
+
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
@@ -93,7 +95,10 @@ export function ProfileCard({ image, title, description, country, badges, user }
         <Button radius="md" style={{ flex: 1 }}>
           Show details
         </Button>
-        <ActionIcon variant="default" radius="md" size={36}>
+        <div style={{cursor: 'pointer'}}>
+
+        <ActionIcon component={Link} href={`/${user.name}`} variant="default" radius="md" size={36} >
+          
           {/* <Heart size={18} className={classes.like} /> */}
 
           <MessageCircle
@@ -101,8 +106,10 @@ export function ProfileCard({ image, title, description, country, badges, user }
             strokeWidth={2}
             color={'#4099bf'}
             className={classes.message}
-         />
+            
+            />
         </ActionIcon>
+            </div>
         
          {/* <Message
     size={46}
